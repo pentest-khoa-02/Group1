@@ -13,10 +13,8 @@ model User {
   email     String     @unique
   password  String
   posts     Post[]
-  story     Story[]
+  stories     Story[]
   user_info User_info?
-
-  messages User_relationship[]
 }
 
 model User_info {
@@ -32,56 +30,40 @@ model User_info {
 
 model Post {
   id        Int      @id @default(autoincrement())
-  authorid  Int
+  userId  Int
   content   String
   create_at DateTime @default(now())
-  photoId   Int      @unique
-  photoPost Photo    @relation(fields: [photoId], references: [id])
-  videoId   Int      @unique
-  videoPost Video    @relation(fields: [videoId], references: [id])
-  author    User     @relation(fields: [authorid], references: [id])
+  user    User     @relation(fields: [userId], references: [id])
+  photos Photo[]
+  videos Video[]
 }
 
 model Story {
   id         Int      @id @default(autoincrement())
-  authorid   Int
+  userId   Int
   content    String
   create_at  DateTime @default(now())
-  photoId    Int      @unique
-  photoStory Photo    @relation(fields: [photoId], references: [id])
-  videoId    Int      @unique
-  videoStory Video    @relation(fields: [videoId], references: [id])
-  author     User     @relation(fields: [authorid], references: [id])
+  user     User     @relation(fields: [userId], references: [id])
+  photos Photo[]
+  videos Video[]
 }
 
 model Photo {
   id    Int    @id @default(autoincrement())
   url   String
-  post  Post[]
-  story Story?
+  postId Int?
+  post Post?    @relation(fields: [postId], references: [id])
+  storyId Int?
+  story Story?   @relation(fields: [storyId], references: [id])
 }
 
 model Video {
   id    Int    @id @default(autoincrement())
   url   String
-  post  Post[]
-  story Story?
-}
-
-model Login {
-  id       Int    @id @default(autoincrement())
-  userid   Int    @unique
-  email    String @unique
-  password String
-}
-
-model Register {
-  id        Int    @id @default(autoincrement())
-  userid    Int    @unique
-  firstname String
-  lastname  String
-  email     String @unique
-  password  String
+  postId Int?
+  post Post?   @relation(fields: [postId], references: [id])
+  storyId Int?
+  story Story?    @relation(fields: [storyId], references: [id])
 }
 
 model Message {
@@ -90,18 +72,4 @@ model Message {
   receiverId    Int
   messsage_text String
   create_at     DateTime @default(now())
-  users User_relationship[]
-}
-
-model User_relationship {
-  user1Id      Int
-  user2Id      Int
-  relationship String
-
-  user      User    @relation(fields: [userId], references: [id])
-  userId    Int
-  message   Message @relation(fields: [messageId], references: [id])
-  messageId Int
-
-  @@id([userId, messageId])
 }
