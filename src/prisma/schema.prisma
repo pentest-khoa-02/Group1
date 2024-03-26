@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int                 @id @default(autoincrement())
+  username  String              @unique
+  email     String              @unique
+  password  String
+  posts     Post[]
+  story     Story[]
+  user_info User_info?
+}
+
+model User_info {
+  id         Int    @id @default(autoincrement())
+  firstname  String
+  lastname   String
+  university String
+  live       String
+  job        String
+  userid     Int    @unique
+  user       User   @relation(fields: [userid], references: [id])
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  authorid  Int
+  content   String
+  create_at DateTime @default(now())
+  author    User     @relation(fields: [authorid], references: [id])
+  photoPost Photo[] 
+  videoPost Video[]   
+}
+
+model Story {
+  id         Int      @id @default(autoincrement())
+  authorid   Int
+  content    String
+  create_at  DateTime @default(now())
+  photoId    Int      @unique
+  author     User     @relation(fields: [authorid], references: [id])
+  photoStory Photo    @relation(fields: [photoId], references: [id])
+}
+
+model Photo {
+  id    Int    @id @default(autoincrement())
+  url   String
+  postid Int  
+  story Story?
+  postof  Post   @relation(fields: [postid] ,references: [id])  
+}
+
+model Video {
+  id    Int    @id @default(autoincrement())
+  url   String
+  postid Int  
+  postof  Post   @relation(fields: [postid] ,references: [id])  
+}
+
+
+
+// model Message {
+//   senderId      Int 
+//   receiverId    Int
+//   userid1      User @relation(fields: [senderId] ,references: [id],name: "sender")
+//   userid2      User @relation(fields: [receiverId] ,references: [id],name: "receive")
+//   messsage_text String
+//   create_at     DateTime            @default(now())
+//  @@id([senderId,receiverId])
+// }
+

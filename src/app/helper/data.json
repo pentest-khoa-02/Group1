@@ -1,0 +1,42 @@
+{
+ "User" : [
+    {"id":1, "username" : "khanhdz","email" :"khanhdangkma2003@gmail.com","password":"admin123"},
+    {"id":2, "username" : "haodz","email"   :"haodz123@gmail.com","password":"admin123"},
+    {"id":3, "username" : "minhdz","email" :"minhdz@gmail.com","password":"admin123"},
+    {"id":4, "username" : "phucdz","email" :"phucdz@gmail.com","password":"admin123"},
+    {"id":5, "username" : "trongdz","email" :"trongdz@gmail.com","password":"admin123"},
+    {"id":6, "username" : "tuandz","email" :"tuandz@gmail.com","password":"admin123"}
+ ],
+ "User_info" : [
+    {"firstname" : "Đặng","lastname" :"Khánh","university":"KMA","live":"Hà Nội","job":"Sinh viên","userid":1},
+    {"firstname" : "Dương","lastname" :"Hào","university":"PTIT","live":"Hà Nội","job":"Sinh viên","userid":2},
+    {"firstname" : "Nguyễn","lastname" :"Trọng ","university":"KMA","live":"Hà Nội","job":"Sinh viên","userid":5},
+    {"firstname" : "Nguyễn","lastname" :"Minh","university":"Chăn rau ","live":"Hà Nội","job":"Sinh viên","userid":3},
+    {"firstname" : "Đặng ","lastname" :"Phúc","university":"FPTU","live":"Hà Nội","job":"Sinh viên","userid":4}
+ ],
+ "Post" : [
+    {"id":1,"authorid" :1,"content" :"Chào cả nhà mình là bệu đây!"},
+    {"id":2,"authorid" :1,"content" :"Helu cả nhà yêu dấu!"},
+    {"id":3,"authorid" :2,"content" :"Chào cả nhà mình là bệu đây!"},
+    {"id":4,"authorid" :3,"content" :"Chào cả nhà mình là bệu đây!"},
+    {"id":5,"authorid" :4,"content" :"Chào cả nhà mình là bệu đây!"},
+    {"id":6,"authorid" :5,"content" :"Chào cả nhà mình là bệu đây!"},
+    {"id":7,"authorid" :6,"content" :"Chào cả nhà mình là bệu đây!"}
+ ],
+ "Photo" : [
+    {"url" : "https://images.unsplash.com/photo-1707343843344-011332037abb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","postid" :1},
+    {"url" : "https://plus.unsplash.com/premium_photo-1675337267945-3b2fff5344a0?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","postid" :2},
+    {"url" : "https://images.unsplash.com/photo-1707343843344-011332037abb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","postid" :3},
+    {"url" : "https://images.unsplash.com/photo-1707343843344-011332037abb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","postid" :4},
+    {"url" : "https://images.unsplash.com/photo-1710878872223-9beab35c04fc?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","postid" :5},
+    {"url" : "https://images.unsplash.com/photo-1682687220801-eef408f95d71?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","postid":6}
+ ],
+ "Video" : [
+    {"url" :"https://www.youtube.com/live/dQ0-n-0EyQY?si=pdcs7kj_iL3xLW4z","postid" :1},
+    {"url" :"https://www.youtube.com/live/dQ0-n-0EyQY?si=pdcs7kj_iL3xLW4z","postid" :2},
+    {"url" :"https://www.youtube.com/live/dQ0-n-0EyQY?si=pdcs7kj_iL3xLW4z","postid" :3},
+    {"url" :"https://www.youtube.com/live/dQ0-n-0EyQY?si=pdcs7kj_iL3xLW4z","postid" :4},
+    {"url" :"https://www.youtube.com/live/dQ0-n-0EyQY?si=pdcs7kj_iL3xLW4z","postid" :5}
+ ]
+
+}

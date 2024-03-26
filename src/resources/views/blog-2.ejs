@@ -1,0 +1,410 @@
+
+
+        <!-- main contents -->
+        <main id="site__main" class="2xl:ml-[--w-side]  xl:ml-[--w-side-sm] p-2.5 h-[calc(100vh-var(--m-top))] mt-[--m-top]">
+
+            <div class="2xl:max-w-[1220px] max-w-[1065px] mx-auto">
+
+                <div class="page-heading">
+                    
+                    <h1 class="page-title"> Blog </h1>
+    
+                    <nav class="nav__underline flex items-center justify-between">
+    
+                        <ul uk-tab class="group" uk-switcher="connect: #ttabs ; animation: uk-animation-slide-right-medium, uk-animation-slide-left-medium"> 
+                       
+                            <li> <a href="#"> Suggestions </a> </li>
+                            <li> <a href="#"> Popular </a> </li>
+                            <li> <a href="#"> My article </a> </li> 
+                            
+                        </ul> 
+    
+                        <!-- right button icons -->
+                        <div class="flex items-center gap-4"> 
+                            <button class="flex items-center gap-0.5 py-1.5 px-2 bg-primary text-white shadow rounded-md">
+                                <ion-icon class="text-lg" name="add"></ion-icon> 
+                                <span class="text-xs font-medium pr-1">Create</span>
+                            </button> 
+                            <select class="bg-white shadow focus:!border-transparent focus:!ring-transparent max-sm:hidden md:w-40 dark:bg-dark2">
+                                <option value="1">Latest</option> 
+                                <option value="3">Popular</option>
+                                <option value="4">Newest</option>
+                            </select>
+                        </div>
+    
+                    </nav>
+    
+                </div>
+               
+                <!-- category list -->
+                <div class="relative -mt-3" tabindex="-1" uk-slider="finite: true" 
+                     uk-sticky="cls-active: bg-slate-100/60 z-30 backdrop-blur-lg px-6 py-1 dark:bg-slate-800/60; offset: 76; start: 10; animation: uk-animation-slide-top">
+    
+                    <div class="py-1 overflow-hidden uk-slider-container">
+        
+                        <ul class="py-2 uk-slider-items w-[calc(100%+0.10px)] capitalize text-sm font-semibold">
+                            <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-white shadow inline-block hover:shadow dark:bg-dark2"> Gamings </a> </li>
+                            <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-white shadow inline-block hover:shadow dark:bg-dark2"> headphones </a> </li>
+                            <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-white shadow inline-block hover:shadow dark:bg-dark2"> Parfums </a> </li>
+                            <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-white shadow inline-block hover:shadow dark:bg-dark2"> Laptops </a> </li>
+                            <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-white shadow inline-block hover:shadow dark:bg-dark2"> Fruits </a> </li>
+                            <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-white shadow inline-block hover:shadow dark:bg-dark2"> Gaming </a> </li>
+                            <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-white shadow inline-block hover:shadow dark:bg-dark2"> Mobiles </a> </li>
+                            <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-white shadow inline-block hover:shadow dark:bg-dark2"> Laptops </a> </li>
+                            <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-white shadow inline-block hover:shadow dark:bg-dark2"> Laptops </a> </li>
+                            <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-white shadow inline-block hover:shadow dark:bg-dark2"> Gaming </a> </li>
+                            <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-white shadow inline-block hover:shadow dark:bg-dark2"> Laptops </a> </li>
+                            <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-white shadow inline-block hover:shadow dark:bg-dark2"> headphones </a> </li>
+                            <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-white shadow inline-block hover:shadow dark:bg-dark2"> Parfums </a> </li>
+                            <li class="w-auto pr-2.5"> <a href="#" class="px-4 py-2 rounded-lg bg-white shadow inline-block hover:shadow dark:bg-dark2"> Fruits </a> </li>
+                        </ul>
+                    
+                    </div>
+                            
+                    <a class="absolute left-0 -translate-y-1/2 top-1/2 flex items-center w-16 h-12 p-2.5 justify-start bg-gradient-to-r from-[#f9fafb] via-[#f9fafb] dark:from-slate-900 dark:via-slate-900" href="#" uk-slider-item="previous"> <ion-icon name="chevron-back" class="text-2xl"></ion-icon> </a>
+                    <a class="absolute right-0 -translate-y-1/2 top-1/2 flex items-center w-16 h-12 p-2.5 justify-end bg-gradient-to-l from-[#f9fafb] via-[#f9fafb] dark:from-slate-900 dark:via-slate-900" href="#" uk-slider-item="next">  <ion-icon name="chevron-forward" class="text-2xl"></ion-icon> </a>
+                
+                </div>
+    
+                <!-- blog grid -->
+                <div class="grid 2xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-2.5 mt-6" 
+                        uk-scrollspy="target: > div; cls: uk-animation-slide-bottom-small; delay: 100 ;repeat: true">
+    
+                    <div class="card sm:col-span-2">
+                        <a href="blog-read ">
+                            <div class="card-media h-full">
+                                <img src="assets/images/group/group-cover-1.jpg" alt="">
+                                <div class="card-overly"></div>
+                            </div>
+                        </a>
+                        <div class="card-body p-4 w-full z-10 absolute bg-gradient-to-t bottom-0 from-black/60">
+                            <a href="timeline "> <p class="card-text text-white/80"> Jesse Steeve </p> </a>
+                            <a href="blog-read ">
+                                <h4 class="card-title text-xl mt-1.5 !text-white"> Top amazing web demos and experiments in 2024 should know about </h4>
+                            </a>
+                            <div class="card-list-info items-center gap-4 text-white/80">
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="heart-outline" class="text-lg md hydrated" role="img" aria-label="heart outline"></ion-icon>
+                                    45
+                                </div>
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="chatbubble-ellipses-outline" class="text-lg md hydrated" role="img" aria-label="chatbubble ellipses outline"></ion-icon>
+                                    156.9K 
+                                </div>
+                                <button type="button" class="flex ml-auto">
+                                    <ion-icon name="arrow-redo-outline" class="text-lg"></ion-icon>
+                                </button>
+                            </div>
+    
+    
+                        </div>
+                    </div>
+    
+                    <div class="card">
+                        <a href="blog-read ">
+                            <div class="card-media h-36">
+                                <img src="assets/images/blog/img-1.jpg" alt="">
+                                <div class="card-overly"></div>
+                                <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 left-2 rounded text-white text-xs z-10"> Life style </span>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <a href="blog-read "> <p class="card-text"> Jesse Steeve  </p> </a> 
+                            <a href="blog-read "> 
+                                <h4 class="card-title text-sm line-clamp-2 mt-1.5"> Top amazing web demos and experiments in 2024 should know about </h4>
+                            </a>
+                            <div class="card-list-info items-center gap-4">
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="heart-outline" class="text-lg md hydrated" role="img" aria-label="heart outline"></ion-icon>
+                                    45
+                                </div>
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="chatbubble-ellipses-outline" class="text-lg md hydrated" role="img" aria-label="chatbubble ellipses outline"></ion-icon>
+                                    156.9K 
+                                </div>
+                                <button type="button" class="flex ml-auto">
+                                    <ion-icon name="arrow-redo-outline" class="text-lg"></ion-icon>
+                                </button>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="blog-read ">
+                            <div class="card-media h-36">
+                                <img src="assets/images/blog/img-3.jpg" alt="">
+                                <div class="card-overly"></div>
+                                <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 left-2 rounded text-white text-xs z-10"> Life style </span>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <a href="blog-read "> <p class="card-text"> Monroe Parker  </p> </a> 
+                            <a href="blog-read "> 
+                                <h4 class="card-title text-sm line-clamp-2 mt-1.5"> Top amazing web demos and experiments in 2024 should know about </h4>
+                            </a>
+                            <div class="card-list-info items-center gap-4">
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="heart-outline" class="text-lg md hydrated" role="img" aria-label="heart outline"></ion-icon>
+                                    45
+                                </div>
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="chatbubble-ellipses-outline" class="text-lg md hydrated" role="img" aria-label="chatbubble ellipses outline"></ion-icon>
+                                    156.9K 
+                                </div>
+                                <button type="button" class="flex ml-auto">
+                                    <ion-icon name="arrow-redo-outline" class="text-lg"></ion-icon>
+                                </button>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="blog-read ">
+                            <div class="card-media h-36">
+                                <img src="assets/images/blog/img-4.jpg" alt="">
+                                <div class="card-overly"></div>
+                                <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 left-2 rounded text-white text-xs z-10"> Life style </span>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <a href="blog-read "> <p class="card-text"> Martin Gray  </p> </a> 
+                            <a href="blog-read "> 
+                                <h4 class="card-title text-sm line-clamp-2 mt-1.5"> Top amazing web demos and experiments in 2024 should know about </h4>
+                            </a>
+                            <div class="card-list-info items-center gap-4">
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="heart-outline" class="text-lg md hydrated" role="img" aria-label="heart outline"></ion-icon>
+                                    45
+                                </div>
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="chatbubble-ellipses-outline" class="text-lg md hydrated" role="img" aria-label="chatbubble ellipses outline"></ion-icon>
+                                    156.9K 
+                                </div>
+                                <button type="button" class="flex ml-auto">
+                                    <ion-icon name="arrow-redo-outline" class="text-lg"></ion-icon>
+                                </button>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="blog-read ">
+                            <div class="card-media h-36">
+                                <img src="assets/images/blog/img-1.jpg" alt="">
+                                <div class="card-overly"></div>
+                                <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 left-2 rounded text-white text-xs z-10"> Life style </span>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <a href="blog-read "> <p class="card-text"> Jesse Steeve  </p> </a> 
+                            <a href="blog-read "> 
+                                <h4 class="card-title text-sm line-clamp-2 mt-1.5">Interesting javaScript and CSS libraries  you should be learn</h4>
+                            </a>
+                            <div class="card-list-info items-center gap-4">
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="heart-outline" class="text-lg md hydrated" role="img" aria-label="heart outline"></ion-icon>
+                                    45
+                                </div>
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="chatbubble-ellipses-outline" class="text-lg md hydrated" role="img" aria-label="chatbubble ellipses outline"></ion-icon>
+                                    156.9K 
+                                </div>
+                                <button type="button" class="flex ml-auto">
+                                    <ion-icon name="arrow-redo-outline" class="text-lg"></ion-icon>
+                                </button>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="blog-read ">
+                            <div class="card-media h-36">
+                                <img src="assets/images/blog/img-5.jpg" alt="">
+                                <div class="card-overly"></div>
+                                <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 left-2 rounded text-white text-xs z-10"> Life style </span>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <a href="blog-read "> <p class="card-text"> Monroe Parker  </p> </a> 
+                            <a href="blog-read "> 
+                                <h4 class="card-title text-sm line-clamp-2 mt-1.5"> blogti5 </h4>
+                            </a>
+                            <div class="card-list-info items-center gap-4">
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="heart-outline" class="text-lg md hydrated" role="img" aria-label="heart outline"></ion-icon>
+                                    45
+                                </div>
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="chatbubble-ellipses-outline" class="text-lg md hydrated" role="img" aria-label="chatbubble ellipses outline"></ion-icon>
+                                    156.9K 
+                                </div>
+                                <button type="button" class="flex ml-auto">
+                                    <ion-icon name="arrow-redo-outline" class="text-lg"></ion-icon>
+                                </button>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="blog-read ">
+                            <div class="card-media h-36">
+                                <img src="assets/images/blog/img-3.jpg" alt="">
+                                <div class="card-overly"></div>
+                                <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 left-2 rounded text-white text-xs z-10"> Life style </span>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <a href="blog-read "> <p class="card-text"> Martin Gray  </p> </a> 
+                            <a href="blog-read "> 
+                                <h4 class="card-title text-sm line-clamp-2 mt-1.5"> Interesting JavaScript and CSS libraries should Know About </h4>
+                            </a>
+                            <div class="card-list-info items-center gap-4">
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="heart-outline" class="text-lg md hydrated" role="img" aria-label="heart outline"></ion-icon>
+                                    45
+                                </div>
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="chatbubble-ellipses-outline" class="text-lg md hydrated" role="img" aria-label="chatbubble ellipses outline"></ion-icon>
+                                    156.9K 
+                                </div>
+                                <button type="button" class="flex ml-auto">
+                                    <ion-icon name="arrow-redo-outline" class="text-lg"></ion-icon>
+                                </button>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="blog-read ">
+                            <div class="card-media h-36">
+                                <img src="assets/images/blog/img-3.jpg" alt="">
+                                <div class="card-overly"></div>
+                                <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 left-2 rounded text-white text-xs z-10"> Life style </span>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <a href="blog-read "> <p class="card-text"> Martin Gray  </p> </a> 
+                            <a href="blog-read "> 
+                                <h4 class="card-title text-sm line-clamp-2 mt-1.5"> Interesting JavaScript and CSS libraries should Know About </h4>
+                            </a>
+                            <div class="card-list-info items-center gap-4">
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="heart-outline" class="text-lg md hydrated" role="img" aria-label="heart outline"></ion-icon>
+                                    45
+                                </div>
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="chatbubble-ellipses-outline" class="text-lg md hydrated" role="img" aria-label="chatbubble ellipses outline"></ion-icon>
+                                    156.9K 
+                                </div>
+                                <button type="button" class="flex ml-auto">
+                                    <ion-icon name="arrow-redo-outline" class="text-lg"></ion-icon>
+                                </button>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="blog-read ">
+                            <div class="card-media h-36">
+                                <img src="assets/images/blog/img-4.jpg" alt="">
+                                <div class="card-overly"></div>
+                                <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 left-2 rounded text-white text-xs z-10"> Life style </span>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <a href="blog-read "> <p class="card-text"> Martin Gray  </p> </a> 
+                            <a href="blog-read "> 
+                                <h4 class="card-title text-sm line-clamp-2 mt-1.5"> Top amazing web demos and experiments in 2024 should know about </h4>
+                            </a>
+                            <div class="card-list-info items-center gap-4">
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="heart-outline" class="text-lg md hydrated" role="img" aria-label="heart outline"></ion-icon>
+                                    45
+                                </div>
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="chatbubble-ellipses-outline" class="text-lg md hydrated" role="img" aria-label="chatbubble ellipses outline"></ion-icon>
+                                    156.9K 
+                                </div>
+                                <button type="button" class="flex ml-auto">
+                                    <ion-icon name="arrow-redo-outline" class="text-lg"></ion-icon>
+                                </button>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="blog-read ">
+                            <div class="card-media h-36">
+                                <img src="assets/images/blog/img-1.jpg" alt="">
+                                <div class="card-overly"></div>
+                                <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 left-2 rounded text-white text-xs z-10"> Life style </span>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <a href="blog-read "> <p class="card-text"> Jesse Steeve  </p> </a> 
+                            <a href="blog-read "> 
+                                <h4 class="card-title text-sm line-clamp-2 mt-1.5">Interesting javaScript and CSS libraries  you should be learn</h4>
+                            </a>
+                            <div class="card-list-info items-center gap-4">
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="heart-outline" class="text-lg md hydrated" role="img" aria-label="heart outline"></ion-icon>
+                                    45
+                                </div>
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="chatbubble-ellipses-outline" class="text-lg md hydrated" role="img" aria-label="chatbubble ellipses outline"></ion-icon>
+                                    156.9K 
+                                </div>
+                                <button type="button" class="flex ml-auto">
+                                    <ion-icon name="arrow-redo-outline" class="text-lg"></ion-icon>
+                                </button>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="card">
+                        <a href="blog-read ">
+                            <div class="card-media h-36">
+                                <img src="assets/images/blog/img-5.jpg" alt="">
+                                <div class="card-overly"></div>
+                                <span class="absolute bg-black bg-opacity-60 bottom-1 font-semibold px-1.5 py-0.5 left-2 rounded text-white text-xs z-10"> Life style </span>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <a href="blog-read "> <p class="card-text"> Monroe Parker  </p> </a> 
+                            <a href="blog-read "> 
+                                <h4 class="card-title text-sm line-clamp-2 mt-1.5"> blogti5 </h4>
+                            </a>
+                            <div class="card-list-info items-center gap-4">
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="heart-outline" class="text-lg md hydrated" role="img" aria-label="heart outline"></ion-icon>
+                                    45
+                                </div>
+                                <div class="flex items-center gap-1.5"> 
+                                    <ion-icon name="chatbubble-ellipses-outline" class="text-lg md hydrated" role="img" aria-label="chatbubble ellipses outline"></ion-icon>
+                                    156.9K 
+                                </div>
+                                <button type="button" class="flex ml-auto">
+                                    <ion-icon name="arrow-redo-outline" class="text-lg"></ion-icon>
+                                </button>
+                            </div>
+    
+                        </div>
+                    </div>
+                    
+    
+                </div>
+     
+                <div class="flex justify-center my-6">
+                    <button type="button" class="bg-white py-2 px-5 rounded-full shadow-md font-semibold text-sm dark:bg-dark2">Load more...</button>
+                </div>
+    
+                
+            </div>
+            
+        </main>
+
+
+        <%- contentFor('other') %>
+  
+
+

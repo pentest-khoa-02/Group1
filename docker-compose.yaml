@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  db:
+    image: "postgres"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "113"
+      POSTGRES_DB: "demo_database"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    image: "mybase666"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000"
+      - "5555:5555"
+    depends_on:
+      - db
+  
+volumes:
+  pgdata:
+
