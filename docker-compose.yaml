@@ -11,7 +11,7 @@ services:
       - pgdata:/var/lib/postgresql/data
 
   web:
-    image: "mybase666"
+    image: "mybase6"
     build:
       context: .
       dockerfile: Dockerfile
