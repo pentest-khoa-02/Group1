@@ -1,6 +1,7 @@
 import {PrismaClient } from '@prisma/client'
 import bcryptjs from "bcryptjs"
 import jsonwebtoken from 'jsonwebtoken'
+import md5 from 'md5'
 const prisma = new PrismaClient()
 const getLoginPage =(req,res) =>{
     res.render('form-login', { layout: false })
