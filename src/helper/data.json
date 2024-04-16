@@ -1,11 +1,11 @@
 {
  "user" : [
-    {"id":1, "username" : "khanhdz","email" :"khanhdangkma2003@gmail.com","password":"admin123"},
-    {"id":2, "username" : "haodz","email"   :"haodz123@gmail.com","password":"admin123"},
-    {"id":666666, "username" : "minhdz","email" :"minhdz@gmail.com","password":"admin123"},
-    {"id":4, "username" : "phucdz","email" :"phucdz@gmail.com","password":"admin123"},
-    {"id":5, "username" : "trongdz","email" :"trongdz@gmail.com","password":"admin123"},
-    {"id":6, "username" : "tuandz","email" :"tuandz@gmail.com","password":"asbuj1ab1233b2f35tef"}
+    {"id":1, "username" : "khanhdz","email" :"khanhdangkma2003@gmail.com","password":"0192023a7bbd73250516f069df18b500"},
+    {"id":2, "username" : "haodz","email"   :"haodz123@gmail.com","password":"0192023a7bbd73250516f069df18b500"},
+    {"id":3, "username" : "minhdz","email" :"minhdz@gmail.com","password":"0192023a7bbd73250516f069df18b500"},
+    {"id":4, "username" : "phucdz","email" :"phucdz@gmail.com","password":"0192023a7bbd73250516f069df18b500"},
+    {"id":5, "username" : "trongdz","email" :"trongdz@gmail.com","password":"0192023a7bbd73250516f069df18b500"},
+    {"id":6, "username" : "tuandz","email" :"tuandz@gmail.com","password":"0192023a7bbd73250516f069df18b500"}
  ],
  "user_info" : [
    {"firstname" : "Đặng Ngọc","lastname" :"Khánh","university":"KMA","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/q6E1TDj.png","role":0,"userid":1},

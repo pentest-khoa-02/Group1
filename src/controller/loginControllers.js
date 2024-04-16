@@ -1,6 +1,7 @@
 import {PrismaClient } from '@prisma/client'
 import bcryptjs from "bcryptjs"
 import jsonwebtoken from 'jsonwebtoken'
+import md5 from 'md5'
 const prisma = new PrismaClient()
 const getLoginPage =(req,res) =>{
     res.render('form-login', { layout: false })
@@ -41,7 +42,7 @@ const  handleLogin =  async (req,res) =>{
           res.redirect('/')
       }
     } catch(ERROR) {
-      // console.log(error1)
+   
       const error = {
         message : "Email or Password is incorrect !"
     }
