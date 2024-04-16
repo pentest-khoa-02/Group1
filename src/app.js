@@ -8,6 +8,7 @@ import { get404page } from './middleware/404.js'
 import path from "path"
 import bcrypt from "bcryptjs/dist/bcrypt.js"
 import methodOverride from "method-override"
+import cookieParser from 'cookie-parser';
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -18,6 +19,9 @@ const port = process.env.PORT || 3000
 configViewEngine(app,__dirname)
 
 app.use(methodOverride('_method'))
+
+//get cookie
+app.use(cookieParser());
 
 //route
 app.use("/",Route)
