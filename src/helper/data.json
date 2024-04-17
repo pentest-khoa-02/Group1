@@ -11,7 +11,7 @@
    {"firstname" : "Đặng Ngọc","lastname" :"Khánh","university":"KMA","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/q6E1TDj.png","role":0,"userid":1},
    {"firstname" : "Dương Quang","lastname" :"Hào","university":"PTIT","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/SujpfSJ.png","role":0,"userid":2},
    {"firstname" : "Lê","lastname" :"Trọng ","university":"KMA","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/vNwRkQf.png","role":0,"userid":5},
-   {"firstname" : "Nguyễn Thế","lastname" :"Minh","university":"Chăn rau ","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/4JJLPWi.png","role":0,"userid":666666},
+   {"firstname" : "Nguyễn Thế","lastname" :"Minh","university":"HUTECH","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/4JJLPWi.png","role":0,"userid":3},
    {"firstname" : "Đặng","lastname" :"Phúc","university":"FPTU","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/q7bnxek.png","role":0,"userid":4},
    {"firstname" : "Trần Thanh ","lastname" :"Tuấn","university":"FPTU","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/hsUs5Sz.png","role":0,"userid":6}
  ],
@@ -19,7 +19,7 @@
     {"id":1,"authorid" :1,"content" :"Chào cả nhà mình là bệu đây!"},
     {"id":2,"authorid" :1,"content" :"Helu cả nhà yêu dấu!"},
     {"id":3,"authorid" :2,"content" :"Chào cả nhà mình là bệu đây!"},
-    {"id":4,"authorid" :666666,"content" :"Chào cả nhà mình là bệu đây!"},
+    {"id":4,"authorid" :3,"content" :"Chào cả nhà mình là bệu đây!"},
     {"id":5,"authorid" :4,"content" :"Chào cả nhà mình là bệu đây!"},
     {"id":6,"authorid" :5,"content" :"Chào cả nhà mình là bệu đây!"},
     {"id":7,"authorid" :6,"content" :"Chào cả nhà mình là bệu đây!"}

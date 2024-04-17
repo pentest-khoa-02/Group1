@@ -19,9 +19,13 @@ const port = process.env.PORT || 3000
 //config view 
 configViewEngine(app,__dirname)
 
+<<<<<<< HEAD
 //verifty user
 app.use(userAuth)
 
+=======
+app.use(userAuth)
+>>>>>>> dab386c893b27d39ad7153435052c7a9e8686e7f
 app.use(methodOverride('_method'))
 
 //get cookie

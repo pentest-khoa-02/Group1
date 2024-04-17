@@ -6,8 +6,8 @@ const prisma = new PrismaClient()
 const getLoginPage =(req,res) =>{
     res.render('form-login', { layout: false })
 }
-const  handleLogin =  async (req,res) =>{
-    const {email,password,rememberme} = await  req.body
+const handleLogin = async (req,res) =>{
+    const {email,password,rememberme} = await req.body
     
     try{
       //check setting 
