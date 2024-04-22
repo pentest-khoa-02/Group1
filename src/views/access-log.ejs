@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="/style.css" rel="stylesheet">
+  <title>Exploit Server</title>
+</head>
+<body>
+  <section class="maincontainer is-page">
+    <div class="container">
+      <h3>Access log</h3>
+      <a href="/exploit">
+        <button class="button" name="home" value="HOME">Home</button>
+      </a>
+      <form id="feedbackForm" action="/exploit/clear-log" method="POST" style="max-width: unset">
+        <button class="button" name="formAction" value="CLEAR_LOG" type="submit">Clear log</button>
+      </form>
+      <code>
+        <pre>
+          <%= accessLog %>
+        </pre>
+      </code>
+      <br>
+    </div>
+  </section>
+</body>
+</html>

@@ -2,6 +2,7 @@ import {PrismaClient } from '@prisma/client'
 import bcryptjs from "bcryptjs"
 import jsonwebtoken from 'jsonwebtoken'
 import md5 from 'md5'
+import { v4 as uuidv4 } from 'uuid';
 const prisma = new PrismaClient()
 
 const getLoginPage =(req,res) =>{
@@ -33,6 +34,7 @@ const handleLogin = async (req,res) =>{
             id: result[0].id,
             username: result[0].username,
          }
+      // origin - not bug
       const token = jsonwebtoken.sign(payload,jwtsecret,{
           expiresIn: '5d'
          })
@@ -42,8 +44,26 @@ const handleLogin = async (req,res) =>{
         });
           res.redirect('/')
       }
+
+      // lv3 - to be continue..
+      /*const kid = "9124495c-2e4d-4bfa-846e-c534da336ceb";
+      const jwtHeader = {
+        alg: 'RS256',
+        typ: 'JWT',
+        kid: kid
+      };
+      const token = jsonwebtoken.sign(payload,jwtsecret,{
+        algorithm: 'RS256',
+        expiresIn: '5d',
+        header: jwtHeader
+       })
+       res.cookie("jwt", token, {
+        httpOnly: true,
+        maxAge: 10000 * 1000,
+      });
+        res.redirect('/')
+      }*/
     } catch(ERROR) {
-   
       const error = {
         message : "Email or Password is incorrect !"
     }

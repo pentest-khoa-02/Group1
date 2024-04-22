@@ -30,6 +30,8 @@ import searchRoute from "./searchRoute.js"
 import search2Route from "./search2Route.js"
 import settingVulRoute from "./settingvulRoute.js"
 import profileRoute from "./profileRoute.js"
+import exploitRoute from "./exploitRoute.js"
+import accesslogRoute from "./accesslogRoute.js"
 const Route = express.Router()
 
 Route.use("/feed",feedRoute)
@@ -63,6 +65,8 @@ Route.use("/search2", search2Route)
 Route.use("/settings", settingVulRoute)
 Route.use("/profile", profileRoute)
 Route.use("/fakedata", fakedataRoute)
+Route.use("/exploit",exploitRoute)
+Route.use("/access-log",accesslogRoute)
 Route.use("/",feedRoute)
 
 export default Route

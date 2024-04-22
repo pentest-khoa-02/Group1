@@ -103,7 +103,7 @@ const userAuth = async (req,res,next) => {
      else {
         const token = req.headers.cookie.split('=')[1];
         //verifty token 
-        const decoded = jwt.decode(token)
+        const decoded = jwt.verify(token, process.env.SecretJWT)
         req.decoded = decoded
         const username = decoded.username
         const result = await prisma.user.findUnique({
