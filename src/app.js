@@ -10,6 +10,7 @@ import path from "path"
 import bcrypt from "bcryptjs/dist/bcrypt.js"
 import methodOverride from "method-override"
 import cookieParser from 'cookie-parser';
+import { pagedata } from './config/pagedata.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -24,6 +25,7 @@ app.use(cookieParser());
 
 //authen middleware
 app.use(userAuth)
+app.use(pagedata)
 app.use(methodOverride('_method'))
 
 //route

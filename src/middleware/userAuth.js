@@ -50,9 +50,9 @@ const userAuth = async (req,res,next) => {
                 username: username,
               },
           })
-          if (req.path == '/form-login')
+          if (req.path === '/form-login')
             return res.redirect("/")
-          if (result != null){
+          if (result !== null){
               next()
           }
       }

@@ -8,7 +8,7 @@
     {"id":6, "username" : "tuandz","email" :"tuandz@gmail.com","password":"0192023a7bbd73250516f069df18b500"}
  ],
  "user_info" : [
-   {"firstname" : "Đặng Ngọc","lastname" :"Khánh","university":"KMA","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/q6E1TDj.png","role":0,"userid":1},
+   {"firstname" : "Đặng Ngọc","lastname" :"Khánh","university":"KMA","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/oFaVY7j.png","role":0,"userid":1},
    {"firstname" : "Dương Quang","lastname" :"Hào","university":"PTIT","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/SujpfSJ.png","role":0,"userid":2},
    {"firstname" : "Lê","lastname" :"Trọng ","university":"KMA","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/vNwRkQf.png","role":0,"userid":5},
    {"firstname" : "Nguyễn Thế","lastname" :"Minh","university":"HUTECH","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/4JJLPWi.png","role":0,"userid":3},
