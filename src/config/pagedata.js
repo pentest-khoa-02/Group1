@@ -1,6 +1,4 @@
 import { prisma } from '../config/prisma.js';
-import express from "express"
-const app = express()
 
 const pagedata = async(req,res,next) => {
     try {

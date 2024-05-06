@@ -22,7 +22,7 @@ const configViewEngine = (app,__dirname) => {
 
     // exploit server
     var accessLogStream = fs.createWriteStream(path.join(__dirname, '/public/access.log'), { flags: 'a' })
-    app.use(morgan('combined', { stream: accessLogStream }))
+    //app.use(morgan('combined', { stream: accessLogStream }))
 }
 
 export default configViewEngine
