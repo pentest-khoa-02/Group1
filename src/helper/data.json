@@ -9,7 +9,9 @@
     {"id":7, "username" : "laoliu","email" :"laoliu@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
     {"id":8, "username" : "anhdaden","email" :"anhdaden@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
     {"id":9, "username" : "ttthanhnga","email" :"ttthanhnga@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
-    {"id":10, "username" : "chloeclem","email" :"chloeclem@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"}
+    {"id":10, "username" : "chloeclem","email" :"chloeclem@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
+    {"id":11, "username" : "doccodung","email" :"doccodung@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
+    {"id":12, "username" : "cocohieu","email" :"cocohieu@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"}
  ],
  "user_info" : [
    {"firstname" : "Đặng Ngọc","lastname" :"Khánh","university":"KMA","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/oFaVY7j.png","userid":1},
