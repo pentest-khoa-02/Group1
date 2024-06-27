@@ -6,22 +6,28 @@ import axios from 'axios';
 
 const getHomePage = async (req,res) => {
     try {
-        //fetch data status
+        //data status have comment
         let data1 = await prisma.$queryRaw`
         SELECT * FROM \"post\" INNER JOIN \"user_info\" ON post.authorid=user_info.userid WHERE viewingobject='Public' ORDER BY post.id DESC`
+        
+        //data status no comment (handle XSS vul)
         let data4 = await prisma.$queryRaw`
         SELECT * FROM \"post\" INNER JOIN \"user_info\" ON post.authorid=user_info.userid WHERE viewingobject='Public' ORDER BY post.id DESC`
-        //fetch my data
+        
+        //my data (name + avatar)
         let data2 = await prisma.$queryRaw`SELECT * FROM \"user_info\" WHERE userid=${req.decoded.id}`
-        //fetch comment data
+        
+        //code fetch comment data
         for (let i = 0; i < data1.length; ++i) {
+            //data3 is comment (add data3 to data1)
             let data3 = await prisma.$queryRaw`
             SELECT * FROM "post_comment" INNER JOIN "user_info" ON post_comment.authorid=user_info.userid WHERE postid=${data1[i].id} ORDER BY commentid ASC`
             if (data3[0]){
                 data1[i].comment = data3
             }
         }
-        //time
+
+        //handle time
         const now = new Date()
         for (let i = 0; i < data1.length; ++i) {
             const specificTime = new Date(data1[i].create_at);

@@ -17,6 +17,7 @@ CREATE TABLE "user_info" (
     "live" TEXT NOT NULL,
     "job" TEXT NOT NULL,
     "avatar" TEXT NOT NULL,
+    "bio" TEXT NOT NULL,
     "userid" INTEGER NOT NULL
 );
 

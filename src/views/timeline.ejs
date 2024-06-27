@@ -35,7 +35,8 @@
 
                         <h3 class="md:text-3xl text-base font-bold text-black dark:text-white"> <%= data.firstname %> <%= data.lastname %> </h3>
 
-                        <p class="mt-2 text-gray-500 dark:text-white/80"> Family , Food , Fashion , Fourever   <a href="#" class="text-blue-500 ml-4 inline-block"> Edit </a></p>
+                        <p class="mt-2 text-gray-500 dark:text-white/80" style="max-width: 666px; text-align: center;"> <%= data.bio %> <br>  
+                            <a href="profile/setting " class="text-blue-500 ml-4 inline-block" style="float: center;"> Edit </a></p>
 
                         <p class="mt-2 max-w-xl text-sm md:font-normal font-light text-center hidden"> I love beauty and emotion. 🥰 I’m passionate about photography and learning. 📚 I explore genres and styles. 🌈 I think photography is storytelling. 😊</p>
 
@@ -223,7 +224,7 @@
                                 <a href="/timeline?id=<%= value1.authorid %> "> <img src="<%= value1.avatar %>" alt="" class="w-6 h-6 mt-1 rounded-full"> </a>
                                 <div class="flex-1">
                                     <a href="/timeline?id=<%= value1.authorid %> " class="text-black font-medium inline-block dark:text-white"> <%= value1.firstname %> <%= value1.lastname %> </a>
-                                    <p class="mt-0.5"> <%= value1.content %> </p>
+                                    <p class="mt-0.5"> <%- value1.content %> </p>
                                 </div>
                             </div>
                             <% } %>
@@ -282,9 +283,18 @@
     
                             var content = textarea.value.trim();
     
+                            function escapeHtml(unsafe) {
+                                return unsafe
+                                    .replace(/&/g, "&amp;")
+                                    .replace(/</g, "&lt;")
+                                    .replace(/>/g, "&gt;")
+                                    .replace(/"/g, "&quot;")
+                                    .replace(/'/g, "&#039;");
+                            }
+
                             var index = Array.from(postElement.parentNode.children).indexOf(postElement);
                             
-                            let data1 = JSON.parse('<%- JSON.stringify(data1) %>')
+                            let data1 = JSON.parse('<%- JSON.stringify(data4) %>')
                             
                             fetch('/commentpost', {
                                 method: 'POST',
@@ -308,7 +318,7 @@
                                     <a href="/timeline?id=<%= data2.avatar %> "> <img src="<%= data2.avatar %>" alt="" class="w-6 h-6 mt-1 rounded-full"> </a>
                                     <div class="flex-1">
                                         <a href="/timeline?id=<%= data2.avatar %> " class="text-black font-medium inline-block dark:text-white"> <%= data2.firstname %> <%= data2.lastname %> </a>
-                                        <p class="mt-0.5"> ${content} </p>
+                                        <p class="mt-0.5"> ${escapeHtml(content)} </p>
                                     </div>
                                 </div>
                             `;

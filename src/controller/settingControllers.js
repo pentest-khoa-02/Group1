@@ -3,8 +3,8 @@ const prisma = new PrismaClient()
 import fs from "fs"
 import { fileURLToPath } from 'url'
 import path from "path"
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+//const __filename = fileURLToPath(import.meta.url)
+//const __dirname = path.dirname(__filename)
 import jwt from 'jsonwebtoken'
 import validator from 'validator'
 
@@ -196,7 +196,17 @@ const postSettingPage = async (req,res) => {
             }
         }
 
-        const {username, email} = req.body
+        const {username, email, bio} = req.body
+        if (bio) {
+            await prisma.user_info.update({
+                where: {
+                    userid: req.decoded.id,
+                },
+                data: {
+                    bio: bio,
+                },
+            })
+        }
         let data
         data = await prisma.user.findUnique({
             where: {

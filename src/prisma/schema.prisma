@@ -28,6 +28,7 @@ model user_info {
   live       String
   job        String
   avatar     String
+  bio        String
   role       user_role[]
   userid     Int         @unique
   user       user        @relation(fields: [userid], references: [id])

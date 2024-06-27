@@ -198,7 +198,7 @@
                                     <a href="/timeline?id=<%= value1.authorid %> "> <img src="<%= value1.avatar %>" alt="" class="w-6 h-6 mt-1 rounded-full"> </a>
                                     <div class="flex-1">
                                         <a href="/timeline?id=<%= value1.authorid %> " class="text-black font-medium inline-block dark:text-white"> <%= value1.firstname %> <%= value1.lastname %> </a>
-                                        <p class="mt-0.5"> <%- value1.content %> </p>
+                                        <p class="mt-0.5"> <%= value1.content %> </p>
                                     </div>
                                 </div>
                                 <% } %>
@@ -238,36 +238,24 @@
                         <% } %>
 
                 <script>
-                    //post comment
                     document.addEventListener("DOMContentLoaded", function () {
                         var button = document.getElementById('postcomment');
                         if (button) {
-                            button.disabled = true;
+                            button.disabled = false;
                             button.addEventListener('click', function(event) {
-                                
-                                //event.preventDefault();
+                                event.preventDefault();
                                 
                                 var postElement = button.closest('.bg-white');
-        
-                                var textarea  = postElement.querySelector('#commentInput');
-                                if (!textarea ) {
+                                var textarea = postElement.querySelector('#commentInput');
+                                
+                                if (!textarea) {
                                     console.error('Không thể tìm thấy textarea để nhập nội dung bình luận.');
                                     return;
                                 }
-        
+                        
                                 var content = textarea.value.trim();
-        
-                                function escapeHtml(unsafe) {
-                                    return unsafe
-                                        .replace(/&/g, "&amp;")
-                                        .replace(/</g, "&lt;")
-                                        .replace(/>/g, "&gt;")
-                                        .replace(/"/g, "&quot;")
-                                        .replace(/'/g, "&#039;");
-                                }
-                                
-                                let data1 = JSON.parse('<%- JSON.stringify(data4) %>')
-        
+                                let data1 = JSON.parse('<%- JSON.stringify(data4) %>');
+                        
                                 fetch('/commentpost', {
                                     method: 'POST',
                                     headers: {
@@ -284,48 +272,13 @@
                                 .catch(error => {
                                     console.error('Error:', error);
                                 });
-        
-                                var commentHTML = `
-                                    <div class="flex items-start gap-3 relative">
-                                        <a href="/timeline?id=<%= data2.avatar %> "> <img src="<%= data2.avatar %>" alt="" class="w-6 h-6 mt-1 rounded-full"> </a>
-                                        <div class="flex-1">
-                                            <a href="/timeline?id=<%= data2.avatar %> " class="text-black font-medium inline-block dark:text-white"> <%= data2.firstname %> <%= data2.lastname %> </a>
-                                            <p class="mt-0.5"> ${escapeHtml(content)} </p>
-                                        </div>
-                                    </div>
-                                `;
-        
-                                var commentsContainer = postElement.querySelector('.sm\\:p-4.p-2\\.5.border-t.border-gray-100.font-normal.space-y-3.relative.dark\\:border-slate-700\\/40');
-        
-                                if (!commentsContainer) {
-                                    console.error('Không thể tìm thấy container của bình luận.');
-                                    return;
-                                }
-        
-                                commentsContainer.innerHTML += commentHTML;
-                                
-                                textarea.value = '';
-        
-                                button.disabled = true;
+
+                                setTimeout(() => {
+                                    window.location.reload();
+                                }, 1000);
                             });
-                            
-                            var textarea = button.closest('.bg-white').querySelector('#commentInput');
-                            textarea.addEventListener('input', function() {
-                                toggleSubmitButton(textarea, button);
-                            });
-        
-                            //window.onload = encodecontent;
-                        };
-                    });
-        
-                    function toggleSubmitButton(textarea, button) {
-                        if (!textarea.value.trim()) {
-                            button.disabled = true;
-                        } else {
-                            button.disabled = false;
                         }
-                    }
-        
+                    });
                 </script>
 
                     </div>

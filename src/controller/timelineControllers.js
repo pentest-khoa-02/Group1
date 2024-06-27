@@ -1,5 +1,7 @@
 import {PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
+import nunjucks from 'nunjucks';
+import ejs from 'ejs';
 
 async function getTimelinePage(req,res){
     const { id } = req.query
@@ -20,22 +22,31 @@ async function getTimelinePage(req,res){
             if (result.length === 0) {
                 return res.render('timelineerror', {data: "User not found"})
             }
+            //data name and avatar of user by id
             const data = result[0]
             const id1 = data.id
 
-            //fetch data status
+            //data status have comment
             let data1 = await prisma.$queryRaw`
             SELECT * FROM \"post\" INNER JOIN \"user_info\" ON post.authorid=user_info.userid WHERE post.authorid=${id1} ORDER BY post.id DESC`
-            //fetch my data
+            
+            //data status no comment (handle XSS vul)
+            let data4 = await prisma.$queryRaw`
+            SELECT * FROM \"post\" INNER JOIN \"user_info\" ON post.authorid=user_info.userid WHERE post.authorid=${id1} ORDER BY post.id DESC`
+            
+             //my data (name + avatar)
             let data2 = await prisma.$queryRaw`SELECT * FROM \"user_info\" WHERE userid=${req.decoded.id}`
-            //fetch comment data
+            
+            //code fetch comment data
             for (let i = 0; i < data1.length; ++i) {
+                //data3 is comment (add data3 to data1)
                 let data3 = await prisma.$queryRaw`
                 SELECT * FROM "post_comment" INNER JOIN "user_info" ON post_comment.authorid=user_info.userid WHERE postid=${data1[i].id} ORDER BY commentid ASC`
                 if (data3[0])
                     data1[i].comment = data3
             }
-            //time
+
+            //handle time
             const now = new Date()
             for (let i = 0; i < data1.length; ++i) {
                 const specificTime = new Date(data1[i].create_at);
@@ -57,19 +68,21 @@ async function getTimelinePage(req,res){
                     data1[i].post_time = `${seconds} seconds ago`;
                 }
             }
+            return res.render('timeline', {data, data1, data2: data2[0], data4})
 
-            return res.render('timeline', {data, data1, data2: data2[0]})
         } catch (err) {
             console.log(err)
             return res.render('timelineerror', {data: "Error executing query"})
         }
     }
     else {
+        const [setting] = await prisma.$queryRaw`Select status from vulnerable where name='SSTI'`
         const id1 = Number(id)
         if (isNaN(id1))
             return res.render('timelineerror', {data: "id is not valid"})
         try {
-            //fetch data name and avatar
+
+            //data name and avatar of user by id
             const data = await prisma.user_info.findUnique({
                 where: {
                 userid: id1,
@@ -78,19 +91,41 @@ async function getTimelinePage(req,res){
             if (data === null)
                 next()
 
-            //fetch data status
+            //code vul SSTI in view bio
+            if (setting.status === 'Easy'){
+                try {
+                    data.bio = nunjucks.renderString(data.bio);
+                } catch (error) {
+                }
+            }
+            else if (setting.status === 'Hard'){
+                try {
+                    data.bio = ejs.render(data.bio);
+                } catch (error) {
+                }
+            }
+
+            //data status have comment
             let data1 = await prisma.$queryRaw`
             SELECT * FROM \"post\" INNER JOIN \"user_info\" ON post.authorid=user_info.userid WHERE post.authorid=${id1} ORDER BY post.id DESC`
-            //fetch my data
+            
+            //data status no comment (handle XSS vul)
+            let data4 = await prisma.$queryRaw`
+            SELECT * FROM \"post\" INNER JOIN \"user_info\" ON post.authorid=user_info.userid WHERE post.authorid=${id1} ORDER BY post.id DESC`
+            
+            //my data (name + avatar)
             let data2 = await prisma.$queryRaw`SELECT * FROM \"user_info\" WHERE userid=${req.decoded.id}`
-            //fetch comment data
+            
+            //code fetch comment data
             for (let i = 0; i < data1.length; ++i) {
+                //data3 is comment (add data3 to data1)
                 let data3 = await prisma.$queryRaw`
                 SELECT * FROM "post_comment" INNER JOIN "user_info" ON post_comment.authorid=user_info.userid WHERE postid=${data1[i].id} ORDER BY commentid ASC`
                 if (data3[0])
                     data1[i].comment = data3
             }
-            //time
+
+            //handle time
             const now = new Date()
             for (let i = 0; i < data1.length; ++i) {
                 const specificTime = new Date(data1[i].create_at);
@@ -112,8 +147,8 @@ async function getTimelinePage(req,res){
                     data1[i].post_time = `${seconds} seconds ago`;
                 }
             }
+            return res.render('timeline', {data, data1, data2: data2[0], data4})
 
-            return res.render('timeline', {data, data1, data2: data2[0]})
         } catch (error) {
             return res.render('timelineerror', {data: "User not found"})
         }
