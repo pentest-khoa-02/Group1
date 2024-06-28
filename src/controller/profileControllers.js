@@ -1,4 +1,5 @@
 import {PrismaClient } from '@prisma/client'
+import ejs from "ejs"
 const prisma = new PrismaClient()
 
 async function mytimeline(req,res){
@@ -12,9 +13,23 @@ async function logout(req,res){
 
 async function pagedata(req,res){
     const fullname = req.fulldata.data.firstname + ' ' + req.fulldata.data.lastname
-    const username = req.fulldata.data1.username
+   
+    const [setting] = await prisma.$queryRaw`Select status from vulnerable where name='SSTI'`
+    let username = undefined
+   try {
+    if (setting.status === 'Easy'){
+         username = ejs.render(`${req.fulldata.data1.username}`)
+    }
+    else{
+         username = req.fulldata.data1.username
+    }
     const avatar = req.fulldata.data.avatar
     res.json({ fullname: fullname, username: username, avatar: avatar })
+   } catch (error) {
+    console.log(error)
+     res.send(error)
+   }
+    
 }
 
 async function setting(req,res){
