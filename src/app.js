@@ -36,7 +36,7 @@ app.use("/",Route)
 
 //handl 404 not found 
 app.use(get404page)
-// console.log(window);
+console.log(import.meta.url)
 
 //bind 
 app.listen(port, () => console.info(`App listening on http://localhost:${port}!!`))
