@@ -2,7 +2,6 @@ import { prisma } from '../config/prisma.js';
 import pug from 'pug';
 import libxmljs from 'libxmljs'
 import { XMLParser } from 'fast-xml-parser';
-
 const getStatusPage = async (req,res) => {
     const { id } = req.query
     if (!id) {

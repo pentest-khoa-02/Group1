@@ -198,7 +198,7 @@
                                     <a href="/timeline?id=<%= value1.authorid %> "> <img src="<%= value1.avatar %>" alt="" class="w-6 h-6 mt-1 rounded-full"> </a>
                                     <div class="flex-1">
                                         <a href="/timeline?id=<%= value1.authorid %> " class="text-black font-medium inline-block dark:text-white"> <%= value1.firstname %> <%= value1.lastname %> </a>
-                                        <p class="mt-0.5"> <%= value1.content %> </p>
+                                        <p class="mt-0.5"> <%- value1.content %> </p>
                                     </div>
                                 </div>
                                 <% } %>

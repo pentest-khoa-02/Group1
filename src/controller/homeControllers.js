@@ -19,11 +19,7 @@ const getLastestId = async function() {
 }
 
 const getHomePage = async (req,res) => {
-    try {
-        
-    } catch (error) {
-        
-    }
+
 
     try {
         //data status have comment
