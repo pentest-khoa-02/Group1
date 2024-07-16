@@ -6,7 +6,7 @@ const Route = express.Router()
 
 //check setting 
 try {
-    const [setting] = await prisma.$queryRaw`Select status from vulnerable where name='Broken Authentication'`
+    const [setting] = prisma.$queryRaw`Select status from vulnerable where name='Broken Authentication'`
     if (setting.status == 'Easy'){
         Route.get('/users/delete',adminController.deleteUser)
     }else {

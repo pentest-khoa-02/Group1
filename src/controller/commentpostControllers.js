@@ -42,6 +42,7 @@ const handleComment = async (req,res) =>{
             await prisma.$queryRaw`
             INSERT INTO \"post_comment\" (authorid, postid, content) VALUES (${req.decoded.id}, ${req.body.postid}, ${DOMPurify.sanitize(xss(req.body.content))})`
         }
+        
     } catch (error) {
         console.error("Error: ", error.message);
     }
