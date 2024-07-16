@@ -198,7 +198,7 @@
                                     <a href="/timeline?id=<%= value1.authorid %> "> <img src="<%= value1.avatar %>" alt="" class="w-6 h-6 mt-1 rounded-full"> </a>
                                     <div class="flex-1">
                                         <a href="/timeline?id=<%= value1.authorid %> " class="text-black font-medium inline-block dark:text-white"> <%= value1.firstname %> <%= value1.lastname %> </a>
-                                        <p class="mt-0.5"> <%- value1.content %> </p>
+                                        <p class="mt-0.5"> <%= value1.content %> </p>
                                     </div>
                                 </div>
                                 <% } %>
@@ -230,7 +230,7 @@
                                 </div>
                                 
     
-                                <button id="postcomment" type="submit" class="text-sm rounded-full py-1.5 px-3.5 bg-secondery"> Replay</button>
+                                <button id="poststatuspost" type="submit" class="text-sm rounded-full py-1.5 px-3.5 bg-secondery"> Replay</button>
                             </div> 
                             </form>
 
@@ -240,8 +240,8 @@
                 <script>
                     //post comment
                     document.addEventListener("DOMContentLoaded", function () {
-                        var button = document.getElementById('postcomment');
-                        if (button) {
+                        // Nghe xem comment đang đứng ở post nào?
+                        document.querySelectorAll('button#poststatuspost').forEach(button => {
                             button.disabled = true;
                             button.addEventListener('click', function(event) {
                                 
@@ -266,6 +266,8 @@
                                         .replace(/'/g, "&#039;");
                                 }
                                 
+                                var index = Array.from(postElement.parentNode.children).indexOf(postElement);
+                                
                                 let data1 = JSON.parse('<%- JSON.stringify(data4) %>')
         
                                 fetch('/commentpost', {
@@ -273,7 +275,7 @@
                                     headers: {
                                         'Content-Type': 'application/json',
                                     },
-                                    body: JSON.stringify({ content: content, postid: data1[0].id }),
+                                    body: JSON.stringify({ content: content, postid: data1[index - 1].id }),
                                 })
                                 .then(response => {
                                     if (response.ok) {
@@ -315,7 +317,7 @@
                             });
         
                             //window.onload = encodecontent;
-                        };
+                        });
                     });
         
                     function toggleSubmitButton(textarea, button) {
