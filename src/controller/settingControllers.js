@@ -7,8 +7,11 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 import jwt from 'jsonwebtoken'
 import validator from 'validator'
+import  ChildProcess  from 'child_process'
 
 const getSettingPage = async (req,res) =>{
+
+    console.log(req.query.hi)
     //get method - change setting
     const [setting1] = await prisma.$queryRaw`Select status from vulnerable where name='CSRF'`
     if (setting1.status === 'Hard'){
@@ -251,4 +254,46 @@ const postSettingPage = async (req,res) => {
     }
 }
 
-export default {getSettingPage, postSettingPage}
+const uploadAvatar =  async (req,res) => {
+    console.log(req.body)
+    const regex = /^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|\d{1,3}(\.\d{1,3}){3}|\[?[a-f\d:]+:[a-f\d:]+\]?)((:\d+)?)(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$/i;
+    if(regex.test(req.body.avatar_url)){
+        //handl download image 
+        try {
+            const numberImage = Math.random()
+            //check setting
+           const [setting] = await prisma.$queryRaw`Select status from vulnerable where name='OS Command Injection'`
+           let url = decodeURIComponent(req.body.avatar_url)
+           if(setting.status === 'None'){
+                //prevent 
+               const blacklist = ['&', '|' ,';', '$' , '>' , '<', '`' , '\\', '!', '\' ' , '\" ',  '(',')' ]
+               blacklist.forEach((item) => {
+                  if(url.includes(item)){
+                      return res.status(200).send({error:`hacking detected ${item}`})
+                  }
+               })
+
+           }
+            ChildProcess.exec(`curl -o ./src/public/assets/images/avatars/${numberImage}.jpg  ${url}` , async (err,result) => {
+             //upload image 
+            const updateInfo = await prisma.user_info.update({
+                where: {
+                    userid: req.fulldata.data.userid,
+                  },
+                  data:{
+                    avatar : `assets/images/avatars/${numberImage}.jpg`
+                  },
+            })
+            console.log(result)
+            res.redirect('/setting')
+            })
+        } catch (error) {
+            res.status(200).send(error)
+        }
+        
+    }else{
+        res.status(200).send({error:"URL not matching format"})
+    }
+      
+}
+export default {getSettingPage, postSettingPage,uploadAvatar}

@@ -157,52 +157,23 @@
                                 <div class="font-normal text-gray-400">
                                 
                                     <div>
-                                        <h4 class="text-xl font-medium text-black dark:text-white"> Social Links </h4>
-                                        <p class="mt-3 font-normal text-gray-600 dark:text-white">We may still send you important notifications about your account and content outside of you preferred notivications settings</p>
+                                        <h4 class="text-xl font-medium text-black dark:text-white"> Update avatar via URL </h4>
+                                        <p class="mt-3 font-normal text-gray-600 dark:text-white">Can be upload your url into avatar !</p>
                                     </div>
     
                                     <div class="space-y-6 mt-8">
-    
+                                        <form action="/setting/upload-avatar" method="post" >
+                                        
                                         <div class="flex items-center gap-3">
                                             <div class="bg-blue-50 rounded-full p-2 flex ">
                                                 <ion-icon name="logo-facebook" class="text-2xl text-blue-600"></ion-icon> 
                                             </div>
                                             <div class="flex-1">
-                                                <input type="text" class="w-full" placeholder="http://www.facebook.com/myname">
+                                                <input type="text" name="avatar_url"  class="w-full" placeholder="https://your-image.jpg">
+                                                <input type="hidden" name="csrftoken" value="<%= csrftoken.token %>" class="w-full">
                                             </div>
                                         </div>
-                                        <div class="flex items-center gap-3">
-                                            <div class="bg-pink-50 rounded-full p-2 flex ">
-                                                <ion-icon name="logo-instagram" class="text-2xl text-pink-600"></ion-icon> 
-                                            </div>
-                                            <div class="flex-1">
-                                                <input type="text" class="w-full" placeholder="http://www.instagram.com/myname">
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-3">
-                                            <div class="bg-sky-50 rounded-full p-2 flex ">
-                                                <ion-icon name="logo-twitter" class="text-2xl text-sky-600"></ion-icon> 
-                                            </div>
-                                            <div class="flex-1">
-                                                <input type="text" class="w-full" placeholder="http://www.twitter.com/myname">
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-3">
-                                            <div class="bg-red-50 rounded-full p-2 flex ">
-                                                <ion-icon name="logo-youtube" class="text-2xl text-red-600"></ion-icon> 
-                                            </div>
-                                            <div class="flex-1">
-                                                <input type="text" class="w-full" placeholder="http://www.youtube.com/myname">
-                                            </div>
-                                        </div>
-                                        <div class="flex items-center gap-3">
-                                            <div class="bg-slate-50 rounded-full p-2 flex ">
-                                                <ion-icon name="logo-github" class="text-2xl text-black"></ion-icon> 
-                                            </div>
-                                            <div class="flex-1">
-                                                <input type="text" class="w-full" placeholder="http://www.github.com/myname">
-                                            </div>
-                                        </div>
+                                        
     
                                     </div> 
                                    
@@ -210,8 +181,10 @@
                                 
                                 <div class="flex items-center justify-center gap-4 mt-16">
                                     <button type="submit" class="button lg:px-6 bg-secondery max-md:flex-1"> Cancle</button>
-                                    <button type="submit" class="button lg:px-10 bg-primary text-white max-md:flex-1"> Save</button>
+                                    <button type="submit" class="button lg:px-10 bg-primary text-white max-md:flex-1 upload-avatar"> Save</button>
                                 </div>
+                               
+                             </form>
     
                             </div>
     
