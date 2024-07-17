@@ -255,7 +255,7 @@ const postSettingPage = async (req,res) => {
 }
 
 const uploadAvatar =  async (req,res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const regex = /^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|\d{1,3}(\.\d{1,3}){3}|\[?[a-f\d:]+:[a-f\d:]+\]?)((:\d+)?)(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$/i;
     if(regex.test(req.body.avatar_url)){
         //handl download image 
@@ -266,7 +266,7 @@ const uploadAvatar =  async (req,res) => {
            let url = decodeURIComponent(req.body.avatar_url)
            if(setting.status === 'None'){
                 //prevent 
-               const blacklist = ['&', '|' ,';', '$' , '>' , '<', '`' , '\\', '!', '\' ' , '\" ',  '(',')' ]
+               const blacklist = [ '|' ,';', '$' , '>' , '<', '`' , '\\', '!', '\' ' , '\" ',  '(',')' ]
                blacklist.forEach((item) => {
                   if(url.includes(item)){
                       return res.status(200).send({error:`hacking detected ${item}`})
@@ -284,7 +284,6 @@ const uploadAvatar =  async (req,res) => {
                     avatar : `assets/images/avatars/${numberImage}.jpg`
                   },
             })
-            console.log(result)
             res.redirect('/setting')
             })
         } catch (error) {
