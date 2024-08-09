@@ -1,6 +1,18 @@
 version: "3.9"
 
 services:
+   
+
+  nginx:
+    image: nginx:1.24
+    container_name: nginx
+    ports:
+      - "80:80"     # Nginx reverse proxy port
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - web
+
   db:
     image: "postgres"
     env_file: .env
@@ -8,17 +20,19 @@ services:
       - pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-
   web:
     image: "web"
     build:
       context: .
       dockerfile: Dockerfile
+    volumes:
+      - ./src:/usr/app/src
     ports:
       - "3000:3000"
-    entrypoint: ["/bin/sh", "./src/scripts/entrypoint.sh"]
+    command: sh -c "npx prisma migrate dev && node src/app.js"
     depends_on:
       - db
+
   
 volumes:
-  pgdata:
+  pgdata: 

@@ -11,7 +11,6 @@ import  ChildProcess  from 'child_process'
 
 const getSettingPage = async (req,res) =>{
 
-    console.log(req.query.hi)
     //get method - change setting
     const [setting1] = await prisma.$queryRaw`Select status from vulnerable where name='CSRF'`
     if (setting1.status === 'Hard'){
@@ -179,6 +178,7 @@ const getSettingPage = async (req,res) =>{
 }
 
 const postSettingPage = async (req,res) => {
+    console.log(req.body)
     const [setting] = await prisma.$queryRaw`Select status from vulnerable where name='CSRF'`
     try {
         let referer = req.headers['referer']
@@ -295,4 +295,19 @@ const uploadAvatar =  async (req,res) => {
     }
       
 }
-export default {getSettingPage, postSettingPage,uploadAvatar}
+
+const uploadfie = async (req,res) => {
+    const updateInfo = await prisma.user_info.update({
+        where: {
+            userid: req.fulldata.data.userid,
+          },
+          data:{
+            avatar : `${req.file.path}`
+          },
+    })
+       return res.status(200).send(JSON.stringify({ 'path' :req.file.path}))
+     
+    // res.send('ok')
+  
+}
+export default {getSettingPage, postSettingPage,uploadAvatar,uploadfie}

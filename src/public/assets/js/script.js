@@ -1,5 +1,4 @@
 
-
 const navbar =['feed','messages','video','event','pages','groups','market','blog'];
 path = window.location.pathname.replace("/","")
 if (navbar.includes(path)){
@@ -219,6 +218,31 @@ if(path== 'messages'){
     })
 
     
+}
+if(path == 'setting'){
+    //get element 
+    
+  let buttonSubmit = document.querySelector('.buttonSubmit_Avatar')
+  const fileInput = document.querySelector('.avatar_file');
+  const formData = new FormData();
+ 
+  
+  //add event 
+  buttonSubmit.addEventListener('click',async(e) => {
+    formData.append('file', (fileInput.files)[0]);
+   //handl post request 
+   response = await fetch('/setting/upload-file',{
+    method: 'POST',
+    body: formData
+   })
+   if(response.status == 200){
+    const data =  await response.text()
+    alert(data)
+    window.location.href='/setting'
+   }else{
+    alert('Something went wrong')
+   }
+  })
 }
 // On page load or when changing themes, best to add inline in `head` to avoid FOUC
 if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {

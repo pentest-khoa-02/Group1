@@ -7,12 +7,25 @@ import fs from "fs"
 import { fileURLToPath } from 'url'
 import path from "path"
 import csrf from "csrf"
+import queryString from 'query-string';
+
+//handl Oauth 
+
+const stringifiedParams = queryString.stringify({
+  client_id: process.env.FACEBOOK_APP_ID,
+  redirect_uri: process.env.FACEBOOK_APP_REDIRECT_LOGIN,
+  response_type: "code"
+});
+
+const facebookLoginUrl = {url:`https://www.facebook.com/v20.0/dialog/oauth?${stringifiedParams}`
+}
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const prisma = new PrismaClient()
 
+
 const getLoginPage =(req,res) =>{
-   return res.render('form-login', { layout: false })
+   return res.render('form-login', { layout: false ,urllogin:facebookLoginUrl})
 }
 const handleLogin = async (req,res) =>{
     const {email,password,rememberme} = await req.body
@@ -29,7 +42,7 @@ const handleLogin = async (req,res) =>{
       //verifty 
       if(result.length == 0 || md5(password) !== result[0].password) {
           const error = {
-              message : "Email or Password is incorrect !"
+              message : "Email or Password is incorrect hihi !"
           }
          return res.render('form-login', { layout: false ,error:error})
       }else{

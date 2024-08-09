@@ -19,12 +19,24 @@ const __dirname = path.dirname(__filename)
 const app = express()
 const port = process.env.PORT || 3000
 
+const uploadFolderPath = path.join(__dirname, '../uploads');
+// Cấu hình express để phục vụ các tệp tĩnh từ thư mục 'uploads'
+app.use('/uploads', express.static(uploadFolderPath));
 //config view 
 configViewEngine(app,__dirname)
 initWebsocket()
 //get cookie
 app.use(cookieParser());
 
+//log 
+const logMiddleware = (req, res, next) => {
+    const now = new Date().toISOString();
+    console.log(`[${now}] ${req.method} ${req.url}`);
+    next(); // Chuyển tiếp yêu cầu tới middleware tiếp theo
+  };
+  
+  // Sử dụng middleware
+// app.use(logMiddleware);
 //authen middleware
 app.use(userAuth)
 app.use(pagedata)
@@ -36,6 +48,5 @@ app.use("/",Route)
 
 //handl 404 not found 
 app.use(get404page)
-
 //bind 
 app.listen(port, () => console.info(`App listening on http://localhost:${port}!!`))
