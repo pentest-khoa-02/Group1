@@ -15,6 +15,7 @@ import group2Route from "./group2Route.js"
 import timelineRoute from "./timelineRoute.js"
 import settingRoute from "./settingRoute.js"
 import loginRoute from "./loginRoute.js"
+import RegisterRoute from "./RegisterRoute.js"
 import exportRoute from "./exportRoute.js"
 import upgradeRoute from "./upgradeRoute.js"
 import componentRoute from "./componentRoute.js"
@@ -41,6 +42,7 @@ import Adminmiddlware from "../middleware/isAdmin.js"
 import flagRoute from "./flagRoute.js"
 import updateInternalRoute from "./updateInternal.js"
 import facebookloginRoute from "./facebookloginRoute.js"
+import EmailVerificationRoute from "./Email_VerificationRoute.js"
 const Route = express.Router()
 
 Route.use("/feed",feedRoute)
@@ -59,6 +61,7 @@ Route.use("/groups-2",group2Route)
 Route.use("/timeline",timelineRoute)
 Route.use("/setting",settingRoute)
 Route.use("/form-login",loginRoute)
+Route.use("/form-register",RegisterRoute)
 Route.use("/export",exportRoute)
 Route.use("/upgrade",upgradeRoute)
 Route.use("/components",componentRoute)
@@ -85,5 +88,6 @@ Route.use("/give_flag",flagRoute)
 Route.use("/give_flag",flagRoute)
 Route.use("/updateInternal", updateInternalRoute)
 Route.use("/facebook/redirect", facebookloginRoute)
+Route.use("/confirm/email_verification", EmailVerificationRoute)
 
 export default Route

@@ -19,6 +19,7 @@ model user {
   sentMessages       message[] @relation("SentMessages")
   receivedMessages   message[] @relation("ReceivedMessages")
   user_info user_info?
+  email_verify Boolean @default(false)
 }
 
 model user_info {

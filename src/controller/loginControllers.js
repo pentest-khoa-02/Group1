@@ -8,19 +8,20 @@ import { fileURLToPath } from 'url'
 import path from "path"
 import csrf from "csrf"
 import queryString from 'query-string';
-
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 //handl Oauth 
 
 const stringifiedParams = queryString.stringify({
   client_id: process.env.FACEBOOK_APP_ID,
   redirect_uri: process.env.FACEBOOK_APP_REDIRECT_LOGIN,
-  response_type: "code"
+  response_type: "code",
+  state: "hiihihihihi"
 });
 
 const facebookLoginUrl = {url:`https://www.facebook.com/v20.0/dialog/oauth?${stringifiedParams}`
 }
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+
 const prisma = new PrismaClient()
 
 
@@ -44,8 +45,14 @@ const handleLogin = async (req,res) =>{
           const error = {
               message : "Email or Password is incorrect hihi !"
           }
-         return res.render('form-login', { layout: false ,error:error})
-      }else{
+         return res.render('form-login', { layout: false ,error:error,urllogin:facebookLoginUrl})
+      }
+      else if(!result[0].email_verify){
+        //hanle not verify email 
+        return res.render('email_ver',{layout : false})
+      }
+      
+      else{
         const [setting] = await prisma.$queryRaw`Select status from vulnerable where name='JWT'`
         let token, header
         if (setting.status === "Easy" || setting.status === "Hard") {
@@ -108,7 +115,7 @@ const handleLogin = async (req,res) =>{
       const error = {
         message : "Email or Password is incorrect !"
     }
-   return res.render('form-login', { layout: false ,error:error})
+   return res.render('form-login', { layout: false ,error:error,urllogin:facebookLoginUrl})
     }
 }
 

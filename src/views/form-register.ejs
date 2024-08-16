@@ -47,7 +47,7 @@
  
 
         <!-- form -->
-        <form method="#" action="#" class="space-y-7 text-sm text-black font-medium dark:text-white"  uk-scrollspy="target: > *; cls: uk-animation-scale-up; delay: 100 ;repeat: true">
+        <form method="post" action="/form-register" class="space-y-7 text-sm text-black font-medium dark:text-white"  uk-scrollspy="target: > *; cls: uk-animation-scale-up; delay: 100 ;repeat: true">
             
           <div class="grid grid-cols-2 gap-4 gap-y-7">
      
@@ -97,7 +97,9 @@
                 <input type="checkbox" id="accept-terms" class="!rounded-md accent-red-800" />
                 <span class="ml-2">you agree to our <a href="#" class="text-blue-700 hover:underline">terms of use </a> </span>
               </label>
-              
+              <% if (typeof(error) != "undefined") {%>
+                <p class="" style="color:red"><%= error.message%></p>
+                <% } %>
             </div>
 
 

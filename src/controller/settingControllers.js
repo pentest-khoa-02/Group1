@@ -255,6 +255,7 @@ const postSettingPage = async (req,res) => {
 }
 
 const uploadAvatar =  async (req,res) => {
+    const {url_redirect} = req.body
     // console.log(req.body)
     const regex = /^(https?:\/\/)?((([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}|\d{1,3}(\.\d{1,3}){3}|\[?[a-f\d:]+:[a-f\d:]+\]?)((:\d+)?)(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(\#[-a-z\d_]*)?$/i;
     if(regex.test(req.body.avatar_url)){
@@ -272,7 +273,7 @@ const uploadAvatar =  async (req,res) => {
                       return res.status(200).send({error:`hacking detected ${item}`})
                   }
                })
-
+            //   console.log(url)
            }
             ChildProcess.exec(`curl -o ./src/public/assets/images/avatars/${numberImage}.jpg  ${url}` , async (err,result) => {
              //upload image 
@@ -284,7 +285,7 @@ const uploadAvatar =  async (req,res) => {
                     avatar : `assets/images/avatars/${numberImage}.jpg`
                   },
             })
-            res.redirect('/setting')
+            res.redirect(url_redirect)
             })
         } catch (error) {
             res.status(200).send(error)

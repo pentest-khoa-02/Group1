@@ -1,17 +1,17 @@
 {
   "user" : [
-    {"id":1, "username" : "khanhdz","email" :"khanhdangkma2003@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
-    {"id":2, "username" : "haodz","email"   :"haodz123@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
-    {"id":666666, "username" : "minhdz","email" :"minhdz@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
-    {"id":4, "username" : "phucdz","email" :"phucdz@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
-    {"id":5, "username" : "trongdz","email" :"trongdz@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
-    {"id":6, "username" : "tuandz","email" :"tuandz@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
-    {"id":7, "username" : "laoliu","email" :"laoliu@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
-    {"id":8, "username" : "anhdaden","email" :"anhdaden@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
-    {"id":9, "username" : "ttthanhnga","email" :"ttthanhnga@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
-    {"id":10, "username" : "chloeclem","email" :"chloeclem@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
-    {"id":11, "username" : "doccodung","email" :"doccodung@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"},
-    {"id":12, "username" : "cocohieu","email" :"cocohieu@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123"}
+    {"id":1, "username" : "khanhdz","email" :"khanhdangkma192@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123","email_verify":true},
+    {"id":2, "username" : "haodz","email"   :"haodz123@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123","email_verify":true},
+    {"id":666666, "username" : "minhdz","email" :"minhdz@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123","email_verify":true},
+    {"id":4, "username" : "phucdz","email" :"phucdz@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123","email_verify":true},
+    {"id":5, "username" : "trongdz","email" :"trongdz@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123","email_verify":true},
+    {"id":6, "username" : "tuandz","email" :"tuandz@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123","email_verify":true},
+    {"id":7, "username" : "laoliu","email" :"laoliu@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123","email_verify":true},
+    {"id":8, "username" : "anhdaden","email" :"anhdaden@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123","email_verify":true},
+    {"id":9, "username" : "ttthanhnga","email" :"ttthanhnga@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123","email_verify":true},
+    {"id":10, "username" : "chloeclem","email" :"chloeclem@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123","email_verify":true},
+    {"id":11, "username" : "doccodung","email" :"doccodung@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123","email_verify":true},
+    {"id":12, "username" : "cocohieu","email" :"cocohieu@gmail.com","password":"0192023a7bbd73250516f069df18b500","passwordnotsecret":"admin123","email_verify":true}
  ],
  "user_info" : [
    {"firstname" : "Đặng Ngọc","lastname" :"Khánh","university":"KMA","live":"Hà Nội","job":"Sinh viên","avatar":"https://i.imgur.com/oFaVY7j.png","userid":1},
