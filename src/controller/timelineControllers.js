@@ -1,7 +1,6 @@
 import {PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 import nunjucks from 'nunjucks';
-import ejs from 'ejs';
 
 async function getTimelinePage(req,res){
     const { id } = req.query
@@ -95,12 +94,6 @@ async function getTimelinePage(req,res){
             if (setting.status === 'Easy'){
                 try {
                     data.bio = nunjucks.renderString(data.bio);
-                } catch (error) {
-                }
-            }
-            else if (setting.status === 'Hard'){
-                try {
-                    data.bio = ejs.render(data.bio);
                 } catch (error) {
                 }
             }

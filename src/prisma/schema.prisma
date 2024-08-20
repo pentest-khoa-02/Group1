@@ -43,6 +43,8 @@ model post {
   feeling       String
   image         String
   video         String
+  document_name String
+  document_data String
   viewingobject String
   url           String
   view_image    String

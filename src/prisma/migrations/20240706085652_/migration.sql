@@ -31,6 +31,8 @@ CREATE TABLE "post" (
     "feeling" TEXT NOT NULL,
     "image" TEXT NOT NULL,
     "video" TEXT NOT NULL,
+    "document_name" TEXT NOT NULL,
+    "document_data" TEXT NOT NULL,
     "viewingobject" TEXT NOT NULL,
     "url" TEXT NOT NULL,
     "view_image" TEXT NOT NULL,

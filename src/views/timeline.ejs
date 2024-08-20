@@ -8,7 +8,7 @@
 
                 <!-- cover -->
                 <div class="relative overflow-hidden w-full lg:h-72 h-48">
-                    <img src="assets/images/avatars/profile-cover.jpg" alt="" class="h-full w-full object-cover inset-0">
+                    <img src="/assets/images/avatars/profile-cover.jpg" alt="" class="h-full w-full object-cover inset-0">
 
                     <!-- overly -->
                     <div class="w-full bottom-0 absolute left-0 bg-gradient-to-t from-black/60 pt-20 z-10"></div>
@@ -172,6 +172,12 @@
                         <div class="sm:px-4 p-2.5 pt-0">
                             <p class="font-normal" style="word-wrap: break-word;"> <%= value.content %> </p>
                             
+                            <% if (value.document_name !== 'None' && value.document_data !== 'None') { %>
+                            <a href="/statuspost/file?id=<%= value.id %> " target="_blank">
+                                File: <%= value.document_name %>
+                            </a>
+                            <% } %>
+
                             <% if (value.url !== 'None') { %>
                             <a href="<%= value.url %>"> 
                                 <figure class="figure mt-3">
@@ -452,16 +458,16 @@
                             <div class="grid grid-cols-2 gap-1 text-center text-sm mt-4 mb-2 rounded-lg overflow-hidden">
 
                                 <div class="relative w-full aspect-[4/3]">
-                                    <img src="assets/images/avatars/avatar-5.jpg" alt="" class="object-cover w-full h-full inset-0">
+                                    <img src="/assets/images/avatars/avatar-5.jpg" alt="" class="object-cover w-full h-full inset-0">
                                 </div> 
                                 <div class="relative w-full aspect-[4/3]">
-                                    <img src="assets/images/avatars/avatar-7.jpg" alt="" class="object-cover w-full h-full inset-0">
+                                    <img src="/assets/images/avatars/avatar-7.jpg" alt="" class="object-cover w-full h-full inset-0">
                                 </div> 
                                 <div class="relative w-full aspect-[4/3]">
-                                    <img src="assets/images/avatars/avatar-4.jpg" alt="" class="object-cover w-full h-full inset-0">
+                                    <img src="/assets/images/avatars/avatar-4.jpg" alt="" class="object-cover w-full h-full inset-0">
                                 </div> 
                                 <div class="relative w-full aspect-[4/3]">
-                                    <img src="assets/images/avatars/avatar-6.jpg" alt="" class="object-cover w-full h-full inset-0">
+                                    <img src="/assets/images/avatars/avatar-6.jpg" alt="" class="object-cover w-full h-full inset-0">
                                 </div> 
 
                             </div>
@@ -481,37 +487,37 @@
 
                                 <div>
                                     <div class="relative w-full aspect-square rounded-lg overflow-hidden">
-                                        <img src="assets/images/avatars/avatar-7.jpg" alt="" class="object-cover w-full h-full inset-0">
+                                        <img src="/assets/images/avatars/avatar-7.jpg" alt="" class="object-cover w-full h-full inset-0">
                                     </div> 
                                     <div class="mt-2 line-clamp-1"> Jesse Steeve </div>
                                 </div>
                                 <div>
                                     <div class="relative w-full aspect-square rounded-lg overflow-hidden">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt="" class="object-cover w-full h-full inset-0">
+                                        <img src="/assets/images/avatars/avatar-2.jpg" alt="" class="object-cover w-full h-full inset-0">
                                     </div> 
                                     <div class="mt-2 line-clamp-1"> John Michael </div>
                                 </div>
                                 <div>
                                     <div class="relative w-full aspect-square rounded-lg overflow-hidden">
-                                        <img src="assets/images/avatars/avatar-3.jpg" alt="" class="object-cover w-full h-full inset-0">
+                                        <img src="/assets/images/avatars/avatar-3.jpg" alt="" class="object-cover w-full h-full inset-0">
                                     </div> 
                                     <div class="mt-2 line-clamp-1"> Monroe Parker </div>
                                 </div>
                                 <div>
                                     <div class="relative w-full aspect-square rounded-lg overflow-hidden">
-                                        <img src="assets/images/avatars/avatar-4.jpg" alt="" class="object-cover w-full h-full inset-0">
+                                        <img src="/assets/images/avatars/avatar-4.jpg" alt="" class="object-cover w-full h-full inset-0">
                                     </div> 
                                     <div class="mt-2 line-clamp-1"> Martin Gray </div>
                                 </div>
                                 <div>
                                     <div class="relative w-full aspect-square rounded-lg overflow-hidden">
-                                        <img src="assets/images/avatars/avatar-5.jpg" alt="" class="object-cover w-full h-full inset-0">
+                                        <img src="/assets/images/avatars/avatar-5.jpg" alt="" class="object-cover w-full h-full inset-0">
                                     </div> 
                                     <div class="mt-2 line-clamp-1"> James Lewis </div>
                                 </div>
                                 <div>
                                     <div class="relative w-full aspect-square rounded-lg overflow-hidden">
-                                        <img src="assets/images/avatars/avatar-6.jpg" alt="" class="object-cover w-full h-full inset-0">
+                                        <img src="/assets/images/avatars/avatar-6.jpg" alt="" class="object-cover w-full h-full inset-0">
                                     </div> 
                                     <div class="mt-2 line-clamp-1"> Alexa stella </div>
                                 </div>
@@ -534,7 +540,7 @@
 
                                 <div class="side-list-item">
                                     <a href="timeline-group ">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt="" class="side-list-image rounded-full">
+                                        <img src="/assets/images/avatars/avatar-2.jpg" alt="" class="side-list-image rounded-full">
                                     </a>
                                     <div class="flex-1">
                                         <a href="timeline-group "><h4 class="side-list-title">  John Michael</h4></a>
@@ -544,7 +550,7 @@
                                 </div>
                                 <div class="side-list-item">
                                     <a href="timeline-group ">
-                                        <img src="assets/images/avatars/avatar-4.jpg" alt="" class="side-list-image rounded-full"> 
+                                        <img src="/assets/images/avatars/avatar-4.jpg" alt="" class="side-list-image rounded-full"> 
                                     </a>
                                     <div class="flex-1">
                                         <a href="timeline-group "><h4 class="side-list-title"> Martin Gray</h4></a>
@@ -554,7 +560,7 @@
                                 </div>  
                                 <div class="side-list-item">
                                     <a href="timeline-group ">
-                                        <img src="assets/images/avatars/avatar-3.jpg" alt="" class="side-list-image rounded-full">
+                                        <img src="/assets/images/avatars/avatar-3.jpg" alt="" class="side-list-image rounded-full">
                                     </a>
                                     <div class="flex-1">
                                         <a href="timeline-group "><h4 class="side-list-title"> Monroe Parker</h4></a>
@@ -564,7 +570,7 @@
                                 </div>  
                                 <div class="side-list-item">
                                     <a href="timeline-group ">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="" class="side-list-image rounded-full">
+                                        <img src="/assets/images/avatars/avatar-1.jpg" alt="" class="side-list-image rounded-full">
                                     </a>
                                     <div class="flex-1">
                                         <a href="timeline-group "><h4 class="side-list-title"> Jesse Steeve</h4></a>
@@ -591,7 +597,7 @@
 
                                 <div class="side-list-item">
                                     <a href="timeline-group ">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt="" class="side-list-image rounded-md">
+                                        <img src="/assets/images/avatars/avatar-2.jpg" alt="" class="side-list-image rounded-md">
                                     </a>
                                     <div class="flex-1">
                                         <a href="timeline-group "><h4 class="side-list-title">  John Michael</h4></a>
@@ -601,7 +607,7 @@
                                 </div>
                                 <div class="side-list-item">
                                     <a href="timeline-group ">
-                                        <img src="assets/images/avatars/avatar-4.jpg" alt="" class="side-list-image rounded-md"> 
+                                        <img src="/assets/images/avatars/avatar-4.jpg" alt="" class="side-list-image rounded-md"> 
                                     </a>
                                     <div class="flex-1">
                                         <a href="timeline-group "><h4 class="side-list-title"> Martin Gray</h4></a>
@@ -611,7 +617,7 @@
                                 </div>  
                                 <div class="side-list-item">
                                     <a href="timeline-group ">
-                                        <img src="assets/images/avatars/avatar-3.jpg" alt="" class="side-list-image rounded-md">
+                                        <img src="/assets/images/avatars/avatar-3.jpg" alt="" class="side-list-image rounded-md">
                                     </a>
                                     <div class="flex-1">
                                         <a href="timeline-group "><h4 class="side-list-title"> Monroe Parker</h4></a>

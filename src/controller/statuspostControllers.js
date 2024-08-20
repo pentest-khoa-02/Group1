@@ -1,5 +1,7 @@
 import { prisma } from '../config/prisma.js';
-const pug = require('pug');
+import pug from 'pug';
+import libxmljs from 'libxmljs'
+import { XMLParser } from 'fast-xml-parser';
 
 const getStatusPage = async (req,res) => {
     const { id } = req.query
@@ -79,4 +81,56 @@ const getStatusPage = async (req,res) => {
     }
 }
 
-export default {getStatusPage}
+const fileXml = async (req,res) => {
+    const { id } = req.query
+    if (!id) {
+        return res.render('timelineerror', {data: "Missing id parameter"})
+    }
+    const id1 = Number(id)
+    if (isNaN(id1))
+        return res.render('timelineerror', {data: "id is not valid"})
+
+    try {
+        const result = await prisma.post.findUnique({
+            where: {
+            id: id1,
+            },
+        })
+        if (result === null)
+            next()
+
+        try {
+            let data
+            const [setting] = await prisma.$queryRaw`Select status from vulnerable where name='XXE'`
+            if (setting.status === 'Easy' || setting.status === 'Medium' ){
+                const xmlDoc = libxmljs.parseXml(result.document_data, {
+                    replaceEntities: true,  
+                    dtdload: true 
+                });
+                data = xmlDoc.toString()
+            }
+            else {
+                const options = {
+                    ignoreDTD: true,
+                    ignoreEntityReferences: true,
+                    entityProcessors: {
+                        generalEntity: { maxRepetition: 10 },
+                        parameterEntity: { maxRepetition: 10 }
+                    }
+                };
+                const parser = new XMLParser(options);
+                const jsonObj = await parser.parse(result.document_data);
+                data = JSON.stringify(jsonObj, null, 2)
+            }
+
+            return res.status(200).send(data);
+        } catch (parseError) {
+            return res.status(500).send('Error parsing XML file.');
+        }
+
+    } catch (error) {
+        return res.render('timelineerror', {data: "File not found"})
+    }
+}
+
+export default {getStatusPage, fileXml}
