@@ -81,6 +81,7 @@ const handleHome = async (req,res) =>{
     try {
         const [setting] = await prisma.$queryRaw`Select status from vulnerable where name='SSRF'`
         const content = await req.body.contentstatus
+        console.log(req.body)
         const urlRegex = /(https?:\/\/[^\s]+)/g
         const urls = content.match(urlRegex);
         let url = 'None', html6
@@ -135,17 +136,17 @@ const handleHome = async (req,res) =>{
         let LastestId = await getLastestId() + 1
 
         //xml file
-        let document_data = "None", document_name = "None"
-        if (req.file) {
-            document_data = req.file.buffer.toString('utf-8')
-            document_name = req.file.originalname
-        }
-        await prisma.$queryRaw`INSERT INTO \"post\" (id, authorid, content, create_at, feeling, checkin, image, video, document_name, document_data, viewingobject, url, view_image, description) 
-        VALUES (${LastestId}, ${req.decoded.id}, ${content}, ${currentTime}, 'None', 'None', 'None', 'None', ${document_name}, ${document_data}, 'Public', ${url}, ${view_image}, ${description});`
-        if (setting.status === 'Hard') {
-            return res.send(html6);
-        }
-        res.send('ok')
+        // let document_data = "None", document_name = "None"
+        // if (req.file) {
+        //     document_data = req.file.buffer.toString('utf-8')
+        //     document_name = req.file.originalname
+        // }
+        // await prisma.$queryRaw`INSERT INTO \"post\" (id, authorid, content, create_at, feeling, checkin, image, video, document_name, document_data, viewingobject, url, view_image, description) 
+        // VALUES (${LastestId}, ${req.decoded.id}, ${content}, ${currentTime}, 'None', 'None', 'None', 'None', ${document_name}, ${document_data}, 'Public', ${url}, ${view_image}, ${description});`
+        // if (setting.status === 'Hard') {
+        //     return res.send(html6);
+        // }
+        // res.send('ok')
     } catch (error) {
         console.error("Error: ", error);
         return res.status(500).send('Internal Server Error');

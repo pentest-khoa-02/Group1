@@ -21,11 +21,11 @@ const getPdfPage = async(req,res) =>{
     }
    try {
     if(setting.status === 'Easy'){
-        url = check_url_easy(url) ? url : "https://seck19.000webhostapp.com/"    
+        url = check_url_easy(url) ? url : "https://example.com/"    
     }else if (setting.status == 'Medium') {
-        url = check_url_medium(url)? url : "https://seck19.000webhostapp.com/"
+        url = check_url_medium(url)? url : "https://example.com/"
     }else {
-      url = check_url_standard(url)? url : "https://seck19.000webhostapp.com/"
+      url = check_url_standard(url)? url : "https://example.com/"
     }
     const pdfBuffer  = await service.renderPDF(url,value)
     res.setHeader('Content-disposition', 'attachment; filename=profile.pdf');

@@ -63,10 +63,11 @@ const handerLogin = async (req,res)=>{
          user = await prisma.user.create({
          data: {
            id: lastUser.id + 1,
-           email: data_user.email,
+           email: data_user.email, 
            username: data_user.last_name + data_user.first_name,
            password: "admin123",
-           passwordnotsecret: "admin123"
+           passwordnotsecret: "admin123",
+           email_verify: true
          },
        })
 
@@ -83,6 +84,15 @@ const handerLogin = async (req,res)=>{
             
          }
        })
+    } else {
+        await prisma.user.update({
+          where: {
+        email: `${data_user.email}`,
+      },
+       data:{
+        email_verify : true
+      }
+        })
     }
     // handle create account with set jwt 
    let jwtsecret = process.env.SecretJWT 

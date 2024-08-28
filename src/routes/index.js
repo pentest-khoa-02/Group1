@@ -43,6 +43,7 @@ import flagRoute from "./flagRoute.js"
 import updateInternalRoute from "./updateInternal.js"
 import facebookloginRoute from "./facebookloginRoute.js"
 import EmailVerificationRoute from "./Email_VerificationRoute.js"
+import XssRoute from "./xssRoute.js"
 const Route = express.Router()
 
 Route.use("/feed",feedRoute)
@@ -89,5 +90,6 @@ Route.use("/give_flag",flagRoute)
 Route.use("/updateInternal", updateInternalRoute)
 Route.use("/facebook/redirect", facebookloginRoute)
 Route.use("/confirm/email_verification", EmailVerificationRoute)
+Route.use("/xss", XssRoute)
 
 export default Route

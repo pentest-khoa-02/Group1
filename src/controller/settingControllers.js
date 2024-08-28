@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename)
 import jwt from 'jsonwebtoken'
 import validator from 'validator'
 import  ChildProcess  from 'child_process'
+import ejs from "ejs"
 
 const getSettingPage = async (req,res) =>{
 
@@ -177,8 +178,9 @@ const getSettingPage = async (req,res) =>{
     }
 }
 
+//prevent csrf by referer and csrf token
 const postSettingPage = async (req,res) => {
-    console.log(req.body)
+    // console.log('ok')
     const [setting] = await prisma.$queryRaw`Select status from vulnerable where name='CSRF'`
     try {
         let referer = req.headers['referer']
@@ -206,6 +208,7 @@ const postSettingPage = async (req,res) => {
             email: email,
             },
         })
+        // console.log(data)
         if (validator.isEmail(email) && !data) {
             await prisma.user.update({
                 where: {
@@ -297,6 +300,7 @@ const uploadAvatar =  async (req,res) => {
       
 }
 
+//handl uploadfile 
 const uploadfie = async (req,res) => {
     const updateInfo = await prisma.user_info.update({
         where: {

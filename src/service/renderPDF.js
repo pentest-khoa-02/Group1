@@ -2,7 +2,7 @@ import puppeteer from "puppeteer"
 
 const renderPDF  = async (url,token) => {
    try {
-    const browser = await puppeteer.launch({ ignoreHTTPSErrors: true});
+    const browser = await puppeteer.launch({headless: true, args: ['--no-sandbox']});
     const page = await browser.newPage();
     await page.setExtraHTTPHeaders({
       "ngrok-skip-browser-warning": "true"
@@ -27,6 +27,7 @@ const renderPDF  = async (url,token) => {
     await browser.close();
     return pdf
    } catch (error) {
+    console.log(error)
       throw error;
    }
   };

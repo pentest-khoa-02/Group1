@@ -35,7 +35,7 @@ const handleRegister = async (req,res) =>{
               email: email,
               username: lastname + " " + firstname,
               password: md5(user_confirm_password),
-              passwordnotsecret: "admin123"
+              passwordnotsecret: "admin123",
             },
           })
    
@@ -59,7 +59,7 @@ const handleRegister = async (req,res) =>{
             email : email
           }
       } catch (error) {
-        // console.log(error)
+        console.log(error)
         error.message = "Something went wrong"
         return res.render('form-register',{layout:false,error:error})
     }
