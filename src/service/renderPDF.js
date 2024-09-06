@@ -2,7 +2,7 @@ import puppeteer from "puppeteer"
 
 const renderPDF  = async (url,token) => {
    try {
-    const browser = await puppeteer.launch({headless: true, args: ['--no-sandbox']});
+    const browser = await puppeteer.launch({ ignoreHTTPSError: true, args: ['--no-sandbox']});
     const page = await browser.newPage();
     await page.setExtraHTTPHeaders({
       "ngrok-skip-browser-warning": "true"

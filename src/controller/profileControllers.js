@@ -12,10 +12,16 @@ async function logout(req,res){
 }
 
 async function pagedata(req,res){
+   try {
     const fullname = req.fulldata.data.firstname + ' ' + req.fulldata.data.lastname
     const username = ejs.render(req.fulldata.data1.username)
     const avatar = req.fulldata.data.avatar
     res.json({ fullname: fullname, username: username, avatar: avatar })
+   } catch (error) {
+    const fullname = req.fulldata.data.firstname + ' ' + req.fulldata.data.lastname
+    const avatar = req.fulldata.data.avatar
+    res.json({ fullname: fullname, username: "Something went wrong!!", avatar: avatar })
+   }
 }
 
 async function setting(req,res){

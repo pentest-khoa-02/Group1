@@ -21,11 +21,11 @@ const getPdfPage = async(req,res) =>{
     }
    try {
     if(setting.status === 'Easy'){
-        url = check_url_easy(url) ? url : "https://example.com/"    
+        url = check_url_easy(url) ? url : "https://geekprank.com/hacker/"    
     }else if (setting.status == 'Medium') {
-        url = check_url_medium(url)? url : "https://example.com/"
+        url = check_url_medium(url)? url : "https://geekprank.com/hacker/"
     }else {
-      url = check_url_standard(url)? url : "https://example.com/"
+      url = check_url_standard(url)? url : "https://geekprank.com/hacker/"
     }
     const pdfBuffer  = await service.renderPDF(url,value)
     res.setHeader('Content-disposition', 'attachment; filename=profile.pdf');
