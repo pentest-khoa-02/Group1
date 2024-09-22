@@ -79,7 +79,7 @@ const userAuth = async (req,res,next) => {
           }
       }
     } catch (error) {
-        return res.clearCookie('jwt').redirect('/form-login')
+        return res.clearCookie('jwt').redirect(`/form-login?returnURL=${req.path}`)
     }
 }
 

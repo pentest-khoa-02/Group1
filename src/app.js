@@ -12,6 +12,7 @@ import { pagedata } from './config/pagedata.js'
 import initWebsocket from "./config/websocket.js"
 import { csrfProtection } from './middleware/csrfProtection.js'
 import {PrismaClient } from '@prisma/client'
+import cors from 'cors'
 const prisma = new PrismaClient()
 
 const __filename = fileURLToPath(import.meta.url)
@@ -25,6 +26,19 @@ app.use('/uploads', express.static(uploadFolderPath));
 //config view 
 configViewEngine(app,__dirname)
 initWebsocket()
+
+
+//configuring cors dynamic Origin 
+var corsOptions = {
+  origin: 'http://localhost:8082' ,
+  methods : ['GET' ,'POST','DELETE'],
+  allowedHeaders : ['Content-Type'],
+  credentials : true ,
+  
+}
+//use cors
+app.use(cors(corsOptions))
+
 //get cookie
 app.use(cookieParser());
 
@@ -36,7 +50,7 @@ const logMiddleware = (req, res, next) => {
   };
   
   // Sử dụng middleware
-// app.use(logMiddleware);
+app.use(logMiddleware);
 //authen middleware
 app.use(userAuth)
 app.use(pagedata)

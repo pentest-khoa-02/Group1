@@ -96,6 +96,8 @@ const handleLogin = async (req,res) =>{
         res.cookie("jwt", token, {
           httpOnly: false,
           maxAge: 10000 * 1000,
+          // sameSite: 'None',
+          // secure: true
         });
         const [settingCsrf] = await prisma.$queryRaw`Select status from vulnerable where name='CSRF'`
         const tokens = new csrf();
@@ -109,12 +111,24 @@ const handleLogin = async (req,res) =>{
           httpOnly: false,
           maxAge: 10000 * 1000,
         });
+
+        //CRLF  injection 
+        let referer = req.headers.referer 
+        if(referer.includes('returnURL')){
+          let params = new URL(referer).searchParams
+          // res.statusCode = 302;
+          // res.setHeader('Location', `${params.get('returnURL')}`)
+          // return  res.end();
+          return res.redirect(`${params.get('returnURL')}`)
+        }
         return res.redirect('/')
       }
     } catch(ERROR) {
+      console.log(ERROR)
       const error = {
         message : "Email or Password is incorrect !"
     }
+
    return res.render('form-login', { layout: false ,error:error,urllogin:facebookLoginUrl})
     }
 }
