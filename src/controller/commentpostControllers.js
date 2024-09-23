@@ -37,8 +37,16 @@ const handleComment = async (req,res) =>{
             INSERT INTO \"post_comment\" (authorid, postid, content) VALUES (${req.decoded.id}, ${req.body.postid}, ${filterBlacklist(req.body.content)})`
         }
         else {
-            await prisma.$queryRaw`
-            INSERT INTO \"post_comment\" (authorid, postid, content) VALUES (${req.decoded.id}, ${req.body.postid}, ${req.body.content})`
+
+            const [setting] = await prisma.$queryRaw`Select status from vulnerable where name='HTTP Smuggling'`
+            if(setting.status != 'None'){
+ await prisma.$queryRaw`
+            INSERT INTO \"post_comment\" (authorid, postid, content,style) VALUES (${req.body.authorid}, ${req.body.postid}, ${req.body.content},${req.headers.mystyle})`
+            }else {
+                await prisma.$queryRaw`
+            INSERT INTO \"post_comment\" (authorid, postid, content,style) VALUES (${req.body.authorid}, ${req.body.postid}, ${req.body.content},${req.body.mystyle})`
+            }
+           
             
             /*const window = new JSDOM('').window;
             const DOMPurify = createDOMPurify(window);
@@ -46,6 +54,7 @@ const handleComment = async (req,res) =>{
             INSERT INTO \"post_comment\" (authorid, postid, content) VALUES (${req.decoded.id}, ${req.body.postid}, ${DOMPurify.sanitize(xss(req.body.content))})`*/
         }
     } catch (error) {
+        res.send(error)
         console.error("Error: ", error.message);
     }
 }

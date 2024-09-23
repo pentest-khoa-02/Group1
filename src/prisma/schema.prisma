@@ -58,6 +58,7 @@ model post_comment {
   content   String
   comment   post   @relation(fields: [postid], references: [id])
   author    user   @relation(fields: [authorid], references: [id])
+  style     String @default("NULL")
 }
 
 model story {

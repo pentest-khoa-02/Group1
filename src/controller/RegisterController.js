@@ -23,7 +23,8 @@ const handleRegister = async (req,res) =>{
    })
    //create account 
    if(firstname && lastname && (user_password === user_confirm_password) && !email_alreader){
-    try {
+    try { 
+      
         const lastUser = await prisma.user.findFirst({
             orderBy: {
               id: 'desc', // Sắp xếp giảm dần theo ID
