@@ -23,10 +23,10 @@ const forwardRequestCommand = async (req,res) =>{
         let data = decodeURI(qs.stringify({'authorid':user_id,'postid':12,'content':comment}))
         data = decodeURIComponent(data)
         // console.log(data)
-        const response = await axios.post('http://localhost:3000/setting',data,{
+        const response = await axios.post('http://localhost:3000/blog-read/handlecomment',data,{
             headers:{
                 'cookie' : cookie,
-                 'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': 'application/x-www-form-urlencoded',
                 [name] : value 
             }
         })
