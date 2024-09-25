@@ -1,18 +1,26 @@
 import express from "express";
+import axios  from "axios";
 const Route = express.Router()
 
-Route.all('/', async (req,res) => {
-    console.log(req.body)
-    console.log( req.headers['x-real-ip'])
-    
-    if(req.headers['x-real-ip'] != "127.0.0.1"){
-      return  res.send('oh no !!')
-    }
-    // console.log('G1{Th!s_!s_F@KE_Fl@g}')   
-    // return res.send('successfully')
-    
-    
-   
+Route.get('/', async (req,res) =>{
+  const data = req.query.data
+  console.log(data)
+  // console.log(data)
+  axios.post('http://localhost:3000/setting', data, {
+      headers: {
+          'Cookie' : req.headers['cookie'],
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Length': 10 
+      }
+  })
+  .then(data => {
+      // console.log(data);
+      return res.send('1')
+  })
+  .catch(error => {
+      console.error(error);
+  });
+
 })
 
 export default Route

@@ -39,14 +39,16 @@ const handleComment = async (req,res) =>{
         else {
 
             const [setting] = await prisma.$queryRaw`Select status from vulnerable where name='HTTP Smuggling'`
+            let result_insert 
             if(setting.status != 'None'){
- await prisma.$queryRaw`
+                const result  =  await prisma.$queryRaw`
             INSERT INTO \"post_comment\" (authorid, postid, content,style) VALUES (${req.body.authorid}, ${req.body.postid}, ${req.body.content},${req.headers.mystyle})`
-            }else {
-                await prisma.$queryRaw`
+                // console.log(result)
+        }else {
+                result_insert =  await prisma.$queryRaw`
             INSERT INTO \"post_comment\" (authorid, postid, content,style) VALUES (${req.body.authorid}, ${req.body.postid}, ${req.body.content},${req.body.mystyle})`
             }
-           
+            res.json({'Result':"Success"})
             
             /*const window = new JSDOM('').window;
             const DOMPurify = createDOMPurify(window);
@@ -55,7 +57,7 @@ const handleComment = async (req,res) =>{
         }
     } catch (error) {
         res.send(error)
-        console.error("Error: ", error.message);
+        console.error("Error: ", error);
     }
 }
 
