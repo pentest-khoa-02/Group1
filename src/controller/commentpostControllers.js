@@ -42,11 +42,11 @@ const handleComment = async (req,res) =>{
             let result_insert 
             if(setting.status != 'None'){
                 const result  =  await prisma.$queryRaw`
-            INSERT INTO \"post_comment\" (authorid, postid, content,style) VALUES (${req.body.authorid}, ${req.body.postid}, ${req.body.content},${req.headers.mystyle})`
+            INSERT INTO \"post_comment\" (authorid, postid, content,style) VALUES (${Number(req.body.authorid)},${Number(req.body.postid)}, ${req.body.content},${req.headers.mystyle?req.headers.mystyle:"null"})`
                 // console.log(result)
         }else {
                 result_insert =  await prisma.$queryRaw`
-            INSERT INTO \"post_comment\" (authorid, postid, content,style) VALUES (${req.body.authorid}, ${req.body.postid}, ${req.body.content},${req.body.mystyle})`
+            INSERT INTO \"post_comment\" (authorid, postid, content,style) VALUES (${Number(req.body.authorid)}, ${Number(req.body.postid)}, ${req.body.content},${req.body.mystyle})`
             }
             res.json({'Result':"Success"})
             

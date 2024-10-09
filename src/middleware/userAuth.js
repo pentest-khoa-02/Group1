@@ -9,6 +9,7 @@ import axios from 'axios';
 import jwkToPem from 'jwk-to-pem';
 
 const userAuth = async (req,res,next) => {
+  // console.log(req.headers)
     let key, value
     if (req.headers.cookie){
       req.headers.cookie.split('; ').forEach(cookie => {

@@ -30,11 +30,10 @@ initWebsocket()
 
 //configuring cors dynamic Origin 
 var corsOptions = {
-  origin: 'http://localhost:8082' ,
+  origin: '*' ,
   methods : ['GET' ,'POST','DELETE'],
   allowedHeaders : ['Content-Type'],
   credentials : true ,
-  
 }
 //use cors
 app.use(cors(corsOptions))

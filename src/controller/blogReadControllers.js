@@ -19,9 +19,7 @@ const forwardRequestCommand = async (req,res) =>{
     //handle
   try {
     if (setting.status != 'None'){
-        console.log('work')
-        let data = decodeURI(qs.stringify({'authorid':user_id,'postid':12,'content':comment}))
-        data = decodeURIComponent(data)
+        let data = `authorid=${user_id}&postid=12&content=${comment}`
         // console.log(data)
         const response = await axios.post('http://localhost:3000/blog-read/handlecomment',data,{
             headers:{
