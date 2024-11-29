@@ -38,6 +38,7 @@ import statuspostRoute from "./statuspostRoute.js"
 import commentpostRoute from "./commentpostRoute.js"
 import adminRoute from "./admin-panelRoute.js"
 import Adminmiddlware from "../middleware/isAdmin.js"
+import registerRoute from "./registerRoute.js"
 const Route = express.Router()
 
 Route.use("/feed",feedRoute)
@@ -56,6 +57,7 @@ Route.use("/groups-2",group2Route)
 Route.use("/timeline",timelineRoute)
 Route.use("/setting",settingRoute)
 Route.use("/form-login",loginRoute)
+Route.use("/form-register",registerRoute)
 Route.use("/export",exportRoute)
 Route.use("/upgrade",upgradeRoute)
 Route.use("/components",componentRoute)

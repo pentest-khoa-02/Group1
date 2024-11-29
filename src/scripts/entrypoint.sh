@@ -7,7 +7,7 @@ done
 
 echo "App is running....."
 
-node src/app.js
+node ./node_modules/.bin/babel-node ./src/app.js
 sleep 3
 
 exec "$@"

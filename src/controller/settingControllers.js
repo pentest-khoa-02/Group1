@@ -3,10 +3,11 @@ const prisma = new PrismaClient()
 import fs from "fs"
 import { fileURLToPath } from 'url'
 import path from "path"
-//const __filename = fileURLToPath(import.meta.url)
-//const __dirname = path.dirname(__filename)
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 import jwt from 'jsonwebtoken'
 import validator from 'validator'
+import { exec } from 'child_process';
 
 const getSettingPage = async (req,res) =>{
     //get method - change setting
@@ -181,11 +182,8 @@ const postSettingPage = async (req,res) => {
         let referer = req.headers['referer']
         if (setting.status === 'None' || setting.status === 'Easy'){
             if( !(req.body.csrftoken != undefined && req.cookies.csrfToken === req.body.csrftoken) ){
-                  
                 return res.send('Dont process without csrftoken')
-               
             }
-
         }
         else if (setting.status === 'Medium'){
             if (referer) {
@@ -213,6 +211,18 @@ const postSettingPage = async (req,res) => {
             email: email,
             },
         })
+        //os command
+        exec(`echo ${email}`, (error, stderr) => {
+            if (error) {
+              console.error(`Error: ${error.message}`);
+              //return res.status(500).send('Internal Server Error');
+            }
+            if (stderr) {
+              console.error(`Stderr: ${stderr}`);
+              //return res.status(500).send('Internal Server Error');
+            }
+        });
+
         if (validator.isEmail(email) && !data) {
             await prisma.user.update({
                 where: {

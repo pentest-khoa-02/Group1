@@ -19,3 +19,5 @@ Go to: [localhost:3000/fakedata](http:localhost:3000/fakedata)
 Go to: [localhost:3000/settings](http:localhost:3000/settings)
 
 ![Alt text](src/public/assets/images/image.png)
+
+<!-- Enable babel: "dev": "nodemon --exec ./node_modules/.bin/babel-node ./src/app.js" -->

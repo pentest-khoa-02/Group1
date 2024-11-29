@@ -4,7 +4,7 @@ const Client = new pg.Client({
     user: "postgres",
     host: "localhost",
 	//Docker
-	// host: "db",
+	//host: "db",
     password: "postgres",
 	port: '5432',
 	database: 'social_network',

@@ -1,4 +1,4 @@
-<form method="post" action="/feed">
+<form id="uploadForm" enctype="multipart/form-data">
     <!-- create status -->
     <div class="hidden lg:p-20 uk- open" id="create-status" uk-modal="">
       
@@ -17,18 +17,28 @@
             </div>
                     
             <div class="space-y-5 mt-3 p-2">
-                <textarea id="content-status" name="create status" class="w-full !text-black placeholder:!text-black !bg-white !border-transparent focus:!border-transparent focus:!ring-transparent !font-normal !text-xl   dark:!text-white dark:placeholder:!text-white dark:!bg-slate-800" name="" id=""  rows="6" placeholder="What do you have in mind?"></textarea>
+                <textarea id="content-status" name="contentstatus" class="w-full !text-black placeholder:!text-black !bg-white !border-transparent focus:!border-transparent focus:!ring-transparent !font-normal !text-xl   dark:!text-white dark:placeholder:!text-white dark:!bg-slate-800" name="" id=""  rows="6" placeholder="What do you have in mind?"></textarea>
             </div>
 
             <div class="flex items-center gap-2 text-sm py-2 px-4 font-medium flex-wrap">
-                <button type="button" class="flex items-center gap-1.5 bg-sky-50 text-sky-600 rounded-full py-1 px-2 border-2 border-sky-100 dark:bg-sky-950 dark:border-sky-900">  
+                <button type="button" onclick="document.getElementById('imageInput').click();" class="flex items-center gap-1.5 bg-sky-50 text-sky-600 rounded-full py-1 px-2 border-2 border-sky-100 dark:bg-sky-950 dark:border-sky-900">  
                     <ion-icon name="image" class="text-base"></ion-icon>  
                     Image 
                 </button>
-                <button type="button" class="flex items-center gap-1.5 bg-teal-50 text-teal-600 rounded-full py-1 px-2 border-2 border-teal-100 dark:bg-teal-950 dark:border-teal-900">  
+                <input type="file" id="imageInput" style="display: none;" accept="" onchange="handleFileChange(event)">
+                
+                <button type="button" onclick="document.getElementById('videoInput').click();" class="flex items-center gap-1.5 bg-teal-50 text-teal-600 rounded-full py-1 px-2 border-2 border-teal-100 dark:bg-teal-950 dark:border-teal-900">  
                     <ion-icon name="videocam" class="text-base"></ion-icon>  
                     Video 
                 </button>
+                <input type="file" id="videoInput" style="display: none;" accept="" onchange="handleFileChange(event)">
+                
+                <button type="button" onclick="document.getElementById('documentInput').click();" class="flex items-center gap-1.5 bg-sky-50 text-sky-600 rounded-full py-1 px-2 border-2 border-sky-100 dark:bg-sky-950 dark:border-sky-900">  
+                    <ion-icon name="image" class="text-base"></ion-icon>  
+                    Document 
+                </button>
+                <input type="file" id="documentInput" name="xmlfile" style="display: none;" accept=".xml,.txt,.csv" onchange="handleFileChange(event)">
+
                 <button type="button" class="flex items-center gap-1.5 bg-orange-50 text-orange-600 rounded-full py-1 px-2 border-2 border-orange-100 dark:bg-yellow-950 dark:border-yellow-900">  
                     <ion-icon name="happy" class="text-base"></ion-icon>  
                     Feeling
@@ -95,13 +105,30 @@
             const modal = document.getElementById('create-status');
             modal.classList.remove('open');
 
-            const contentstatus = document.getElementById('content-status').value;
+            const contentStatus = document.getElementById('content-status').value;
+            const fileInput = document.getElementById('documentInput').files[0];
+            const formData = new FormData();
+            formData.append('contentstatus', contentStatus);
+            formData.append('xmlFile', fileInput);
+
             fetch('/feed', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Lỗi khi gửi yêu cầu:', error);
+            });
+
+            /*fetch('/feed', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ content: contentstatus }),
+                body: JSON.stringify({ content: contentstatus, Input: imageInput }),
             })
             .then(response => {
                 if (response.ok) {
@@ -111,7 +138,7 @@
             })
             .catch(error => {
                 console.error('There was an error!', error);
-            });
+            });*/
 
             const closeButton = document.querySelector('#create-status .uk-modal-close');
             closeButton.click();

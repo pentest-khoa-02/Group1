@@ -2,7 +2,21 @@ import {PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 import ogs from 'open-graph-scraper';
 import moment from 'moment-timezone';
-import axios from 'axios';
+import axios from 'axios'
+
+const getLastestId = async function() {
+    const LastestId = await prisma.post.findMany({
+      orderBy: {
+        id: 'desc',
+      },
+      take: 1,
+    });
+    if (LastestId.length > 0) {
+      return LastestId[0].id;
+    } else {
+      return 1;
+    }
+}
 
 const getHomePage = async (req,res) => {
     try {
@@ -12,7 +26,7 @@ const getHomePage = async (req,res) => {
         
         //data status no comment (handle XSS vul)
         let data4 = await prisma.$queryRaw`
-        SELECT * FROM \"post\" INNER JOIN \"user_info\" ON post.authorid=user_info.userid WHERE viewingobject='Public' ORDER BY post.id DESC`
+        SELECT id FROM \"post\" INNER JOIN \"user_info\" ON post.authorid=user_info.userid WHERE viewingobject='Public' ORDER BY post.id DESC`
         
         //my data (name + avatar)
         let data2 = await prisma.$queryRaw`SELECT * FROM \"user_info\" WHERE userid=${req.decoded.id}`
@@ -60,7 +74,7 @@ const getHomePage = async (req,res) => {
 const handleHome = async (req,res) =>{
     try {
         const [setting] = await prisma.$queryRaw`Select status from vulnerable where name='SSRF'`
-        const content = await req.body.content
+        const content = await req.body.contentstatus
         const urlRegex = /(https?:\/\/[^\s]+)/g
         const urls = content.match(urlRegex);
         let url = 'None', html6
@@ -112,11 +126,20 @@ const handleHome = async (req,res) =>{
             }
         }
         const currentTime = moment().toISOString()
-        await prisma.$queryRaw`INSERT INTO \"post\" (authorid, content, create_at, feeling, checkin, image, video, viewingobject, url, view_image, description) 
-        VALUES (${req.decoded.id}, ${content}, ${currentTime}, 'None', 'None', 'None', 'None', 'Public', ${url}, ${view_image}, ${description});`
+        let LastestId = await getLastestId() + 1
+
+        //xml file
+        let document_data = "None", document_name = "None"
+        if (req.file) {
+            document_data = req.file.buffer.toString('utf-8')
+            document_name = req.file.originalname
+        }
+        await prisma.$queryRaw`INSERT INTO \"post\" (id, authorid, content, create_at, feeling, checkin, image, video, document_name, document_data, viewingobject, url, view_image, description) 
+        VALUES (${LastestId}, ${req.decoded.id}, ${content}, ${currentTime}, 'None', 'None', 'None', 'None', ${document_name}, ${document_data}, 'Public', ${url}, ${view_image}, ${description});`
         if (setting.status === 'Hard') {
             return res.send(html6);
         }
+
     } catch (error) {
         //console.error("Error: ", error.message);
         return res.status(500).send('Internal Server Error');
