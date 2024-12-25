@@ -67,7 +67,11 @@ const search = async (req, res) => {
     })
     let checkStatus = "";
     const sql = await db.Client.query(`SELECT status FROM public."vulnerable" WHERE name = 'SQL Injection'`, (err, result) => {
-        if(err) console.log('ERROR!')
+        if(err)
+            { 
+                console.log('ERROR!')
+                return;
+            }
         else{
             var checkS = result.rows
             checkStatus = checkS[0].status 
@@ -82,7 +86,10 @@ const search = async (req, res) => {
                 }
                 else{
                     const findUser = db.Client.query(query, (err, result2) => {
-                        if(err) console.log("Error!")
+                        if(err) {
+                            console.log("Error!")
+                            return;
+                            }
                         else{
                             let fUser = lowercaseNames.filter( (lowercaseName) => {
                                 return (lowercaseName.lastname).toLowerCase().indexOf(obj.name.toLowerCase()) !== -1
@@ -100,7 +107,11 @@ const search = async (req, res) => {
             }
             else{
                 const findUser = db.Client.query(query, (err, result2) => {
-                    if(err) console.log("Error!")
+                    if(err) {
+                        console.log("Error!");
+                        console.log(err)
+                        return res.send("Something went wrong");
+                    }
                     else{
                         let fUser = lowercaseNames.filter( (lowercaseName) => {
                             return (lowercaseName.lastname).toLowerCase().indexOf(obj.name.toLowerCase()) !== -1

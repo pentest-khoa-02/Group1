@@ -10,6 +10,7 @@ services:
       - "80:80"    
     volumes:
       - ./nginx:/etc/nginx/conf.d
+      - ./nginx/htpasswd:/etc/nginx/.htpasswd
     depends_on:
       - web
 
@@ -22,14 +23,17 @@ services:
       - "5432:5432"
   web:
     image: "web"
+    extra_hosts:
+      - "web-vul.com:127.0.0.1"
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
       - ./src:/usr/app/src
     ports:
-      - "3000:3000"
-      - "5000:5555"
+      # - "3000:3000"
+      # - "5000:5555"
+      -  "8081:8081"
     command: sh -c "npx prisma migrate dev && node src/app.js"
     depends_on:
       - db

@@ -74,7 +74,8 @@ const handleRegister = async (req,res) =>{
    const token = jwt.sign(payload,jwtsecret,{ algorithm: 'HS256' })
 
    //send mail to user' email
-   const verificationUrl = `${process.env.CLIENT_URL}/confirm/email_verification/${token}`;
+  //  const verificationUrl = `${process.env.CLIENT_URL}/confirm/email_verification/${token}`;
+   const verificationUrl = `http://10.1.1.94/confirm/email_verification/${token}`;
    const message = `
     <h1>Welcome to Our Service</h1>
     <p>Hi ${lastname + " " + firstname},</p>

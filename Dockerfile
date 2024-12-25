@@ -13,10 +13,10 @@ RUN apt-get update && \
     software-properties-common
 
 # Add the Chromium repository and install Chromium
-# RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
-#     sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' && \
-#     apt-get update && \
-#     apt-get install -y chromium
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list' && \
+    apt-get update && \
+    apt-get install -y chromium
 
 # Clean up
 RUN apt-get clean && \
@@ -25,8 +25,8 @@ RUN apt-get clean && \
 # Set environment variable to avoid errors related to running Chromium in Docker
 ENV CHROME_BIN=/usr/bin/chromium
 
-COPY . .
 
+COPY . .
 RUN npm install
 
 RUN chmod 755 src/scripts/entrypoint.sh

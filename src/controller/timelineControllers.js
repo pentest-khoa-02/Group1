@@ -10,8 +10,9 @@ async function getTimelinePage(req,res){
     const [setting] = await prisma.$queryRaw`Select status from vulnerable where name='SQL Injection'`
     if (setting.status === 'Easy'){
         try {
+            console.log(`SELECT * FROM \"user_info\" WHERE userid = '${id}'`);
             const result = await prisma.$queryRawUnsafe(`SELECT * FROM \"user_info\" WHERE userid = '${id}'`)
-            const blacklist = ['select', 'SELECT', 'union', 'UNION', 'drop', 'DROP', 'OR', 'and', 'AND', 'substring', 'SUBSTRING', 'pg_sleep', 'PG_SLEEP', '-', '#']
+            const blacklist = ['select', 'SELECT', 'union', 'UNION', 'drop', 'DROP', 'OR', 'and', 'AND', 'substring', 'SUBSTRING', 'pg_sleep', 'PG_SLEEP','-']
             for (let i = 0; i < blacklist.length; i++) {
                 if (id.includes(blacklist[i])) {
                     return res.render('timelineerror', {data: "NO SQLi !!"})
